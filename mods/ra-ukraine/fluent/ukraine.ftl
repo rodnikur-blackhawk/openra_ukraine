@@ -64,7 +64,7 @@ actor-bohdana =
 actor-ratel =
     .name = Ratel S
     .description =
-    Remote-controlled mine carrier.
+    Remote-controlled unmanned ground kamikaze drone.
     Detonates on contact.
       Strong vs Vehicles and Buildings
       Weak vs Infantry and Aircraft
@@ -177,7 +177,7 @@ actor-flamingo =
     .description =
     Provides a cruise missile strike.
     Requires power to operate.
-    Maximum of four can be built.
+    Maximum of two can be built.
       Special Ability: Flamingo Strike
     .power-name = Flamingo Strike
     .power-description = Launches a cruise missile that devastates
@@ -186,12 +186,9 @@ actor-flamingo =
 actor-pokrova =
     .name = Pokrova EW Station
     .description =
-    Electronic warfare station.
-    Jams enemy units in the target area and
-    hides your units there from enemy sensors.
-    Requires power to operate.
+    Strategic electronic warfare complex.
     Maximum of one can be built.
-      Special Ability: EW Field
+      Special Ability: EW Field (jams enemy radar and cloaks friendly units for 15 sec)
     .power-name = Pokrova EW Field
     .power-description = Jams enemy units in an area and hides
      your units from enemy sensors.

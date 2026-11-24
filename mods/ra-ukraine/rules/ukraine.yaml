@@ -24,7 +24,6 @@ BTR4:
 		Locomotor: wheeled
 	Turreted:
 		TurnSpeed: 28
-		# the Parus module sits behind the middle of the hull
 		Offset: -185,0,0
 	Armament:
 		Weapon: 30mm.ZTM
@@ -35,8 +34,6 @@ BTR4:
 	WithSpriteTurret:
 	Selectable:
 		DecorationBounds: 1365, 1365
-	# the rear doors swing open while infantry climb in and shut after them:
-	# the stock APC Cargo grants "notmobile" while a passenger is getting in
 	WithSwitchableOverlay@REARDOORS:
 		SwitchingSequence: doors-switch
 		EnabledSequence: doors-open
@@ -56,9 +53,9 @@ GEPARD:
 	Tooltip:
 		Name: actor-gepard.name
 	Health:
-		HP: 26000
+		HP: 22000
 	Armor:
-		Type: Heavy
+		Type: Light
 	Mobile:
 		TurnSpeed: 28
 		Speed: 85
@@ -88,12 +85,12 @@ BULAT:
 		Prerequisites: fix, ~vehicles.ukraine, ~techlevel.medium
 		Description: actor-bulat.description
 	Valued:
-		Cost: 1200
+		Cost: 1300
 	Tooltip:
 		Name: actor-bulat.name
 		GenericName: actor-bulat.generic-name
 	Health:
-		HP: 62000
+		HP: 52000
 	Mobile:
 		Speed: 68
 	Turreted:
@@ -162,7 +159,6 @@ VILKHA:
 		TurnSpeed: 16
 	Armament:
 		Weapon: Vilkha.Rocket
-		# rockets leave from the top end of the raised pack
 		LocalOffset: -78,-50,671, -78,50,671
 		ReloadingCondition: reloading
 	FireWarheadsOnDeath:
@@ -184,12 +180,10 @@ BOHDANA:
 		HP: 16000
 	Mobile:
 		TurnSpeed: 16
-		Speed: 99
+		Speed: 76
 		Locomotor: wheeled
 	Armament:
 		Weapon: 155mm.Bohdana
-		# muzzle brake of the barrel raised over the cab: trunnions on the roof
-		# behind the hull centre, 35 degrees elevation
 		LocalOffset: 354,0,687
 		MuzzleSequence: muzzle
 	Selectable:
@@ -199,10 +193,10 @@ RATEL:
 	Inherits: DTRK
 	Buildable:
 		BuildPaletteOrder: 330
-		Prerequisites: dome, ~vehicles.ukraine, ~techlevel.medium
+		Prerequisites: dome, fix, ~vehicles.ukraine, ~techlevel.medium
 		Description: actor-ratel.description
 	Valued:
-		Cost: 700
+		Cost: 950
 	Tooltip:
 		Name: actor-ratel.name
 	Health:
@@ -215,8 +209,6 @@ RATEL:
 	FireWarheadsOnDeath:
 		Weapon: RatelCharge
 		EmptyWeapon: RatelCharge
-	# one trigger for vehicles (right next to them), one for buildings (2c0, see
-	# RatelTargeting.Buildings); both are "primary", so either sets it off
 	Armament:
 		Weapon: RatelTargeting
 	Armament@BUILDINGS:
@@ -235,10 +227,8 @@ UAVOP:
 		Description: actor-uavop.description
 	Tooltip:
 		Name: actor-uavop.name
-	# sees a little further through the drone camera (infantry default: 4c0), so
-	# most of the drone range (FPV.Drone, 7c0) is usable without a spotter
 	RevealsShroud:
-		Range: 6c0
+		Range: 5c512
 	Armament@PRIMARY:
 		Weapon: FPV.Drone
 		LocalOffset: 200,0,500
@@ -295,16 +285,16 @@ TB2:
 		Prerequisites: ~afld, ~aircraft.ukraine, ~techlevel.medium
 		Description: actor-tb2.description
 	Valued:
-		Cost: 1000
+		Cost: 1250
 	Tooltip:
 		Name: actor-tb2.name
 	Health:
 		HP: 4500
 	RevealsShroud:
-		MinRange: 11c0
-		Range: 14c0
+		MinRange: 10c0
+		Range: 13c0
 	RevealsShroud@GAPGEN:
-		Range: 11c0
+		Range: 10c0
 	Armament:
 		Weapon: MAM-L
 		LocalOffset: 0,-300,0, 0,300,0
@@ -315,26 +305,24 @@ TB2:
 		TurnSpeed: 12
 	AmmoPool:
 		Ammo: 4
-		ReloadDelay: 25
+		ReloadDelay: 35
 	WithAmmoPipsDecoration:
 		PipCount: 4
 	-Contrail:
 	-EjectOnDeath:
 	SpawnActorOnDeath:
 		Actor: TB2.Husk
-	# radar jamming, like the Allied Mobile Radar Jammer (MRJ); it does not deflect missiles
 	ProximityExternalCondition@JAMMER:
-		Range: 18c0
+		Range: 10c0
 		ValidRelationships: Enemy, Neutral
 		Condition: jammed
 	WithRangeCircle@JAMMER:
 		Type: jammer
-		Range: 18c0
+		Range: 10c0
 		Color: 0000FF80
-	# its sensors spot cloaked units, mines and submarines (not units hidden by the Pokrova field)
 	DetectCloaked:
 		DetectionTypes: Cloak, Mine, Underwater
-		Range: 7c0
+		Range: 5c0
 	RenderDetectionCircle:
 	LeavesTrails:
 		Offsets: -400,0,0
@@ -353,8 +341,6 @@ F16:
 		Name: actor-f16.name
 	Health:
 		HP: 9000
-	# air-superiority fighter: AIM-120 missiles against aircraft only; on the
-	# Defend stance it engages any enemy aircraft that comes within range
 	Armament:
 		Weapon: AIM-120
 		LocalOffset: 0,-256,-30, 0,256,-30
@@ -382,13 +368,6 @@ F16:
 		Bounds: 1536, 1365, 0, 85
 		DecorationBounds: 1706, 1365, 0, 42
 
-# "Lyutyi" long-range kamikaze drone. Flies to the target like a plane; once
-# within 2.5 cells it dives onto it: the drone leaves the map and continues as
-# the Lyutyi.Strike projectile (weapons/ukraine.yaml), so each drone hits once.
-# Shot down on the way it crashes as a husk without the warhead going off.
-# Like the real one (piston engine, about 200 km/h, navigation camera only) it is
-# slower than the Bayraktar TB2, sees little around itself and is easy prey for
-# air defence.
 LYUTYI:
 	Inherits: YAK
 	Buildable:
@@ -421,8 +400,6 @@ LYUTYI:
 	-WithAmmoPipsDecoration:
 	-Contrail:
 	-EjectOnDeath:
-	# the dive: firing grants "striking", which removes the drone at once (no
-	# death, no husk); the projectile carries on to the target
 	GrantConditionOnAttack@STRIKE:
 		Condition: striking
 		ArmamentNames: primary
@@ -535,8 +512,6 @@ SEABABY:
 		DecorationBounds: 1024, 1024
 
 # --- Structures --------------------------------------------------------------
-# Ukrainian-named variants of shared buildings (same pattern as AFLD.Ukraine):
-# they provide the original prerequisite names, so the tech tree is unchanged.
 
 BARR.Ukraine:
 	Inherits: BARR
@@ -573,7 +548,6 @@ SPEN.Ukraine:
 	Buildable:
 		Prerequisites: anypower, ~structures.ukraine, ~techlevel.low
 		Description: actor-spen-ukraine.description
-		# stock picture re-labelled "NAVAL BASE" (the stock cameo says "SUB PEN")
 		Icon: icon-ukraine
 	Tooltip:
 		Name: actor-spen-ukraine.name
@@ -585,10 +559,6 @@ SPEN.Ukraine:
 	RenderSprites:
 		Image: spen
 
-# "Pokrova" electronic-warfare station: replaces the Iron Curtain.
-# The support power drops an EW field: for the first 5 seconds enemy units inside
-# it lose control (cannot move, fire slowly and inaccurately); allied units
-# inside it are hidden from enemy sensors and weapon guidance for 20 seconds.
 POKROVA:
 	Inherits: IRON
 	-GrantExternalConditionPower@IRONCURTAIN:
@@ -606,7 +576,7 @@ POKROVA:
 		LifeTime: 250
 		Terrain: Clear, Rough, Road, Ore, Gems, Beach, Water, River, Bridge, Rock, Tree, Wall, Scorch
 		Icon: pokrova
-		ChargeInterval: 3000
+		ChargeInterval: 5250
 		Name: actor-pokrova.power-name
 		Description: actor-pokrova.power-description
 		SelectTargetSpeechNotification: SelectTarget
@@ -659,26 +629,13 @@ POKROVA.FIELD:
 POKROVA.COVER:
 	Inherits: POKROVA.FIELD
 	KillsSelf:
-		Delay: 375
+		Delay: 250
 	-SpawnActorOnDeath:
 	-ProximityExternalCondition@JAM:
 	WithRangeCircle@EW:
 		Type: pokrova-cover
 		Color: 40C0FF70
 
-# "Flamingo" cruise-missile launch position: replaces the Missile Silo. The strike
-# hits like the GDI Ion Cannon (devastating in a small area, no fallout) and
-# recharges faster than the atom bomb. Same building stats as the Missile Silo.
-#
-# Build limit: 4 pads. For reference, total damage dealt over the hit area
-# (damage x area, summed over all warheads, before armour modifiers):
-#   Atomic (5 warheads, 15000 + 4x 6000, out to 6-30 cells) ~ 13.76M
-#   FlamingoStrike (10000 x1000% to 1c1, 250% at 2c1, 100% at 2c512) ~ 0.99M
-# so a full match for one atom bomb would take ~14 pads; 4 was chosen as the
-# balanced limit (a 4-missile salvo, each missile far deadlier at its point).
-# AllowMultiple gives every pad its own charge timer and its own button, so all
-# 4 missiles can be fired at once; without it the pads would share a single
-# missile.
 FLAMINGO:
 	Inherits: ^ScienceBuilding
 	Inherits@IDISABLE: ^DisableOnLowPowerOrPowerDown
@@ -691,7 +648,7 @@ FLAMINGO:
 		Queue: Defense
 		BuildPaletteOrder: 140
 		Prerequisites: stek.ukraine, ~structures.ukraine, ~techlevel.unrestricted
-		BuildLimit: 4
+		BuildLimit: 2
 		Description: actor-flamingo.description
 	Building:
 		Footprint: xx
@@ -727,14 +684,12 @@ FLAMINGO:
 		Class: flamingo
 		Bounds: 2048, 1024
 	NukePower@flamingo:
-		# own order name, so the AI uses the Flamingo with its own decision (below)
-		# and the stock "nukepower" decision keeps serving the Soviet atom bomb
 		OrderName: FlamingoStrike
 		PauseOnCondition: disabled
 		AllowMultiple: True
 		Cursor: nuke
 		Icon: flamingo
-		ChargeInterval: 6000
+		ChargeInterval: 7500
 		Name: actor-flamingo.power-name
 		Description: actor-flamingo.power-description
 		SelectTargetSpeechNotification: SelectTarget
@@ -760,18 +715,10 @@ FLAMINGO:
 	RenderSprites:
 		Image: flamingo
 
-# The Ukrainian airfield calls in a Storm Shadow cruise missile instead of parabombs.
-# It keeps the parabombs order name, so the AI keeps using it the same way.
-# It has no Spy Plane, and the Paratroopers are replaced by a Mi-8 air assault:
-# the power drops an invisible marker (heliassault.marker) on the chosen cell and
-# scripts/ukraine-heliassault.lua flies in two Mi-8s that land there, unload
-# 8 infantry and fly back off the map.
 AFLD.Ukraine:
 	Buildable:
 		Description: actor-afld-ukraine-zsu.description
 	-AirstrikePower@parabombs:
-	# switched off for Ukraine by prerequisite rather than removed, because some
-	# campaign maps remove these powers from AFLD.Ukraine in their own rules
 	AirstrikePower@spyplane:
 		Prerequisites: aircraft.soviet, !aircraft.ukraine
 	ParatroopersPower@paratroopers:
@@ -783,7 +730,6 @@ AFLD.Ukraine:
 		LifeTime: 50
 		Terrain: Clear, Rough, Road, Ore, Gems, Beach
 		Icon: heliassault
-		# same recharge as the stock Paratroopers (AFLD ParatroopersPower)
 		ChargeInterval: 7500
 		Name: actor-afld-ukraine-zsu.heliassault-name
 		Description: actor-afld-ukraine-zsu.heliassault-description
@@ -806,8 +752,6 @@ AFLD.Ukraine:
 		Description: actor-afld-ukraine-zsu.power-description
 		SelectTargetSpeechNotification: SelectTarget
 		SelectTargetTextNotification: notification-select-target
-		# one low-flying, hard-to-detect missile: the enemy gets no launch
-		# warning; it dives straight onto the aim cell (see StormShadow)
 		MissileWeapon: StormShadow
 		MissileImage: stormshadow.missile
 		RemoveMissileOnDetonation: True
@@ -821,8 +765,6 @@ AFLD.Ukraine:
 		CameraRange: 5c0
 		SupportPowerPaletteOrder: 40
 
-# Landing spot of the Mi-8 air assault; picked up (and removed) by
-# scripts/ukraine-heliassault.lua, otherwise it expires after LifeTime.
 HELIASSAULT.MARKER:
 	Interactable:
 	EditorOnlyTooltip:
@@ -834,16 +776,10 @@ HELIASSAULT.MARKER:
 		QuantizedFacings: 1
 	ScriptTags:
 
-# The air assault script and the bot tactics (scripts/ukraine-ai.lua, rules in
-# rules/ukraine-ai.yaml) run on every map (see the headers of the scripts).
 World:
 	LuaScript:
 		Scripts: ukraine-heliassault.lua, ukraine-ai.lua
 
-# Mi-8 of the air assault: a transport helicopter (8 infantry, like the Chinook)
-# with one main rotor. It flies under script control only (no selection, rejects
-# orders). Built on ^Helicopter rather than TRAN, because some campaign maps
-# change TRAN in their own rules.
 MI8:
 	Inherits: ^Helicopter
 	-MapEditorData:
@@ -885,48 +821,13 @@ MI8:
 		AfterUnloadDelay: 25
 	SpawnActorOnDeath:
 		Actor: MI8.Husk
-	# evenly spaced facings (mi8.shp), not the classic helicopter ones
 	-ClassicFacingBodyOrientation:
 	BodyOrientation:
 	RenderSprites:
 		Image: mi8
 
 # --- AI: build and use the Ukrainian superweapons --------------------------
-# The Storm Shadow strike reuses the stock "parabombs" decision (same order name).
-#
-# Flamingo: the missile is deadly in a small area (full damage to 1c1, 250% to
-# 2c1, 100% to 2c512) and flies for 16 seconds, so the bot aims it at the densest
-# value of enemy structures within 2 cells and keeps it 3 cells away from its own
-# and allied troops and buildings. Pads that are ready together fire together at
-# the same spot: two missiles are needed to destroy a Construction Yard.
-#
-# Pokrova: the field is dropped only where the bot's (or an ally's) own units are
-# fighting: units that fired within the last 5 seconds are targetable as
-# "InCombat" (rules/electronic-warfare.yaml), and the bot picks the spot with the
-# most value of such units within the field radius. Firing means enemies are in
-# weapon range, so the field also jams them; an idle army (e.g. gathered in the
-# base) no longer draws the field.
-#
-# Building: a BuildingFractions value N lets the bot add another pad while
-# pads x 100 <= N x (all its buildings), so with 10 the 2nd, 3rd and 4th pads come
-# at 10, 20 and 30 buildings (with 1, as before, it never built a 2nd one).
-#
-# Unit production of Ukrainian bots: separate UnitBuilderBotModule instances,
-# enabled only when the bot plays Ukraine (GrantConditionOnFaction on the player
-# actor), so the Allied and Soviet bots keep the stock mix. UnitsToBuild is the
-# share of the army each unit type should make up; the order follows the
-# doctrine of the faction - drones first, kamikaze drones everywhere:
-#   infantry: UAV operator (FPV) > rifleman > rocket soldier > engineer > HUR agent
-#   vehicles: Vilkha > Gepard > Bulat > BTR-4 > Ratel S > Oplot > Bohdana
-#             (+ a couple of minelayers, like the real Ukrainian minefields);
-#             the BTR-4s ferry the infantry to the front, a few are enough
-#   aircraft: Bayraktar TB2 (scouting and strikes) > Lyutyi > F-16
-#             (interceptors)
-#   ships:    Sea Baby > corvette
-# How the drones, the BTR-4, the artillery, the HUR agents and the F-16 are
-# used is up to scripts/ukraine-ai.lua.
-# UAV operators need a Drone Bunker, so the bots also build it early (dbnk in
-# BaseBuilderBotModule, ra-overrides.yaml).
+
 Player:
 	GrantConditionOnFaction@UKRAINEBOT:
 		Condition: ukraine-faction
@@ -955,7 +856,6 @@ Player:
 			ratel: 25
 			oplot: 20
 			bohdana: 15
-			# its single airfield builds only TB2s, a limited number
 			tb2: 10
 		UnitLimits:
 			e6: 2
@@ -1066,9 +966,6 @@ Player:
 					Attractiveness: -10
 					TargetMetric: Value
 					CheckRadius: 3c0
-			# Storm Shadow (stock "parabombs" decision, same order name): a single
-			# precise missile, so aim it at the most valuable single enemy
-			# structure (worth 1000 or more), never next to own troops
 			parabombs:
 				MinimumAttractiveness: 1000
 				Consideration@1:
@@ -1083,7 +980,6 @@ Player:
 					Attractiveness: -10
 					TargetMetric: Value
 					CheckRadius: 1c0
-			# same targeting as the stock Paratroopers decision
 			heliassault:
 				OrderName: UkraineHeliAssault
 				MinimumAttractiveness: 5
@@ -1110,34 +1006,33 @@ Player:
 					CheckRadius: 4c512
 	BaseBuilderBotModule@rush:
 		BuildingLimits:
-			flamingo: 4
+			flamingo: 2
 			pokrova: 1
 		BuildingFractions:
 			flamingo: 10
 			pokrova: 1
 	BaseBuilderBotModule@normal:
 		BuildingLimits:
-			flamingo: 4
+			flamingo: 2
 			pokrova: 1
 		BuildingFractions:
 			flamingo: 10
 			pokrova: 1
 	BaseBuilderBotModule@turtle:
 		BuildingLimits:
-			flamingo: 4
+			flamingo: 2
 			pokrova: 1
 		BuildingFractions:
 			flamingo: 12
 			pokrova: 1
 	BaseBuilderBotModule@naval:
 		BuildingLimits:
-			flamingo: 4
+			flamingo: 2
 			pokrova: 1
 		BuildingFractions:
 			flamingo: 10
 			pokrova: 1
 
-# Drone bunker: replaces the Flame Tower; same stats, launches FPV drones.
 DBNK:
 	Inherits: FTUR
 	Buildable:
@@ -1146,9 +1041,6 @@ DBNK:
 		Description: actor-dbnk.description
 	Tooltip:
 		Name: actor-dbnk.name
-	# every launch: the roof hatch opens and the drone climbs out (sequence
-	# "fire", 8 frames x 2 ticks); the FPV.Bunker drone leaves when the sprite
-	# drone is at the top (frame 4 = tick 8)
 	Armament:
 		Weapon: FPV.Bunker
 		LocalOffset: 0,0,420
@@ -1156,8 +1048,6 @@ DBNK:
 	WithAttackAnimation:
 		Sequence: fire
 
-# Stugna-P ATGM position: replaces the Tesla Coil; same cost, armour and power
-# draw (shuts down without power), rotating missile launcher.
 STUGNA:
 	Inherits: GUN
 	Inherits@IDISABLE: ^DisableOnLowPowerOrPowerDown
@@ -1188,8 +1078,6 @@ STUGNA:
 	DetectCloaked:
 		Range: 6c0
 		RequiresCondition: !disabled
-	# spelled out in full: the partial definition from ^DisableOnLowPowerOrPowerDown
-	# would otherwise replace the one inherited through GUN
 	WithBuildingRepairDecoration:
 		Image: allyrepair
 		Sequence: repair
@@ -1233,10 +1121,10 @@ TB2.Husk:
 	LeavesTrails:
 		Offsets: -400,0,0
 	RevealsShroud:
-		MinRange: 11c0
-		Range: 14c0
+		MinRange: 10c0
+		Range: 13c0
 	RevealsShroud@GAPGEN:
-		Range: 11c0
+		Range: 10c0
 	RenderSprites:
 		Image: tb2
 

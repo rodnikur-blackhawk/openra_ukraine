@@ -39,24 +39,24 @@
 
 125mm.Bulat:
 	Inherits: ^Cannon
-	ReloadDelay: 60
-	Range: 5c0
+	ReloadDelay: 65
+	Range: 4c768
 	Projectile: Bullet
 		Speed: 724
 	Warhead@1Dam: SpreadDamage
-		Damage: 7000
+		Damage: 6200
 		Versus:
-			Heavy: 115
+			Heavy: 110
 
 125mm.Oplot:
 	Inherits: ^Cannon
 	ReloadDelay: 75
-	Range: 5c512
+	Range: 5c0
 	InvalidTargets: Air, Infantry
 	Projectile: Bullet
 		Speed: 768
 	Warhead@1Dam: SpreadDamage
-		Damage: 10000
+		Damage: 9000
 		Versus:
 			Heavy: 115
 		InvalidTargets: Air
@@ -79,11 +79,11 @@ KT-12.7:
 
 Vilkha.Rocket:
 	Inherits: SCUD
-	ReloadDelay: 300
-	Range: 12c0
+	ReloadDelay: 320
+	Range: 11c0
 	MinRange: 4c0
 	Burst: 4
-	BurstDelays: 10
+	BurstDelays: 12
 	Report: missile6.aud
 	Projectile: Bullet
 		Speed: 204
@@ -94,13 +94,13 @@ Vilkha.Rocket:
 		ContrailLength: 20
 	Warhead@1Dam: SpreadDamage
 		Spread: 256
-		Damage: 2600
+		Damage: 2100
 		Versus:
-			None: 90
-			Wood: 75
-			Light: 70
-			Heavy: 45
-			Concrete: 90
+			None: 85
+			Wood: 70
+			Light: 65
+			Heavy: 40
+			Concrete: 80
 		DamageTypes: Prone50Percent, TriggerProne, SmallExplosionDeath
 	Warhead@3Eff: CreateEffect
 		Explosions: med_explosion
@@ -108,18 +108,13 @@ Vilkha.Rocket:
 
 155mm.Bohdana:
 	Inherits: 155mm
-	ReloadDelay: 80
-	Range: 13c0
+	ReloadDelay: 85
+	Range: 12c0
 	MinRange: 4c0
 	Projectile: Bullet
-		Inaccuracy: 0c768
+		Inaccuracy: 0c896
 		Speed: 190
 
-# Ratel S triggers. Vehicles: it goes off right next to them (1c0, so the
-# charge destroys them in one hit). Buildings: the attack range is measured to
-# the centre of the building and the Ratel cannot drive into it, so - like the
-# stock Demo Truck (DemoTruckTargeting) - it goes off within 2c0, from the cell
-# next to a 3x3 Construction Yard.
 RatelTargeting:
 	ValidTargets: Vehicle
 	Range: 1c0
@@ -134,15 +129,11 @@ RatelTargeting.Buildings:
 	Warhead@1Dam: TargetDamage
 		ValidTargets: Structure
 
-# Ratel S charge. Units: unchanged, anything it reaches is destroyed in one hit
-# (28000 at up to 1000% close in). Buildings (Warhead@1DamBuildings): half of
-# the building's full health, whatever the building - two Ratels take down a
-# Construction Yard or any other building.
 RatelCharge:
 	ValidTargets: Ground, GroundActor, Trees, Water, WaterActor
 	Warhead@1Dam: SpreadDamage
-		Spread: 512
-		Damage: 28000
+		Spread: 384
+		Damage: 18000
 		Falloff: 1000, 368, 135, 50, 18, 7, 0
 		ValidTargets: GroundActor, Trees, WaterActor
 		InvalidTargets: Structure
@@ -150,13 +141,13 @@ RatelCharge:
 			None: 90
 			Wood: 100
 			Light: 100
-			Heavy: 100
-			Concrete: 60
+			Heavy: 75
+			Concrete: 50
 		AffectsParent: true
 		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
 	Warhead@1DamBuildings: HealthPercentageDamage
-		Spread: 1c512
-		Damage: 50
+		Spread: 1c256
+		Damage: 34
 		ValidTargets: Structure
 		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
 	Warhead@2Smu: LeaveSmudge
@@ -170,8 +161,8 @@ RatelCharge:
 
 MAM-L:
 	Inherits: ^AntiGroundMissile
-	ReloadDelay: 40
-	Range: 7c0
+	ReloadDelay: 50
+	Range: 6c512
 	MinRange: 1c0
 	Report: missile7.aud
 	Projectile: Missile
@@ -179,40 +170,31 @@ MAM-L:
 		Inaccuracy: 0
 		HorizontalRateOfTurn: 40
 		CruiseAltitude: 1c512
-		RangeLimit: 12c0
+		RangeLimit: 11c0
 	Warhead@1Dam: SpreadDamage
-		Damage: 9000
+		Damage: 7500
 		Versus:
 			None: 40
-			Wood: 80
+			Wood: 75
 			Light: 100
-			Heavy: 120
-			Concrete: 70
+			Heavy: 115
+			Concrete: 65
 
-# F-16 air-superiority fighter: AIM-120 AMRAAM air-to-air missiles (in Ukraine
-# the F-16s mostly defend the sky: they shoot down aircraft, cruise missiles and
-# attack drones). Air targets only. Longer reach than a SAM Site (Nike, 7c512)
-# and a fast, agile missile: two hits bring down a Yak or MiG, three a Hind.
 AIM-120:
 	Inherits: ^AntiAirMissile
-	ReloadDelay: 30
-	Range: 9c0
+	ReloadDelay: 35
+	Range: 7c512
 	MinRange: 1c0
 	Report: missile6.aud
 	Projectile: Missile
 		Image: MISSILE
-		Speed: 420
+		Speed: 380
 		Inaccuracy: 0
-		HorizontalRateOfTurn: 60
-		RangeLimit: 14c0
+		HorizontalRateOfTurn: 50
+		RangeLimit: 11c0
 	Warhead@1Dam: SpreadDamage
-		Damage: 5000
+		Damage: 4000
 
-# WaterActor: also naval yards and other buildings standing in the water.
-# Range 1c512: ships cannot share a cell, so the drone has to go off from the
-# next cell (1c0 away, 1c448 diagonally); with 0c768 it never reached a ship
-# that stood still. The charge (SeaBabyCharge) still deals ~290% of its damage
-# at 1c0 and ~160% at 1c448.
 SeaBabyTargeting:
 	ValidTargets: Ship, Bridge, WaterActor
 	Range: 1c512
@@ -223,15 +205,15 @@ SeaBabyTargeting:
 SeaBabyCharge:
 	ValidTargets: Ground, Water, GroundActor, WaterActor, Underwater
 	Warhead@1Dam: SpreadDamage
-		Spread: 768
-		Damage: 32000
+		Spread: 640
+		Damage: 18000
 		Falloff: 1000, 368, 135, 50, 18, 7, 0
 		ValidTargets: GroundActor, WaterActor, Underwater, Bridge
 		Versus:
 			Wood: 100
 			Light: 100
-			Heavy: 100
-			Concrete: 300
+			Heavy: 85
+			Concrete: 200
 		AffectsParent: true
 		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
 	Warhead@3Eff: CreateEffect
@@ -244,35 +226,31 @@ SeaBabyCharge:
 		ValidTargets: Water
 		ImpactActors: false
 
-# UAV operator: an FPV kamikaze drone with the same damage profile as the Flamer
-# (15 x 1000 at 70% vs infantry) delivered as a single guided hit.
-# Range 7c0: the same as the Tesla Tank (TTankZap). The Drone Bunker keeps its
-# own 5c0 (FPV.Bunker).
 FPV.Drone:
 	ValidTargets: Ground, Water, GroundActor, WaterActor, Trees
-	ReloadDelay: 50
-	Range: 7c0
+	ReloadDelay: 60
+	Range: 5c512
 	Report: minelay1.aud
 	Projectile: Missile
 		Image: fpv
 		Shadow: true
-		Speed: 150
+		Speed: 135
 		Arm: 0
 		Blockable: false
 		Inaccuracy: 0
-		HorizontalRateOfTurn: 60
+		HorizontalRateOfTurn: 45
 		CruiseAltitude: 1c0
-		RangeLimit: 12c0
+		RangeLimit: 9c0
 	Warhead@1Dam: SpreadDamage
-		Spread: 341
-		Damage: 15000
+		Spread: 256
+		Damage: 11000
 		ValidTargets: GroundActor, WaterActor, Trees
 		Versus:
 			None: 70
-			Wood: 80
-			Tree: 80
-			Light: 40
-			Heavy: 20
+			Wood: 70
+			Tree: 70
+			Light: 35
+			Heavy: 18
 			Concrete: 10
 		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
 	Warhead@2Smu: LeaveSmudge
@@ -288,20 +266,6 @@ FPV.Drone:
 		ValidTargets: Water, Underwater
 		InvalidTargets: Bridge
 
-# "Lyutyi" kamikaze drone: when it reaches the target it dives onto it (the drone
-# itself becomes this projectile, see LYUTYI in rules/ukraine.yaml).
-# Buildings (Warhead@1Dam): a direct hit deals 112500 = 75% of a Construction
-# Yard (FACT, 150000 HP, Wood); every other building takes the same damage, so
-# anything with up to 112500 HP (power plants, barracks, refinery, radar, tech
-# center, airfield, defences...) is destroyed by one hit.
-# Units (Warhead@1DamUnits): a direct hit takes half the HP of a Heavy Tank
-# (3TNK, 60000: 112500 x 27% = 30375) and kills the infantry in all 8 cells
-# around the impact, diagonal ones included (112500 x 40% = 45000 at the centre,
-# 60% at 0c768, 30% at 1c256, 12% at 1c768: at least ~7000 to a soldier in a
-# diagonal cell, more than any rifleman or rocket soldier has), nothing past 2c0.
-# The real Lyutyi carries a small (50-75 kg) warhead, so the blast on buildings
-# stays tight: full damage to 0c512, 50% at 0c768, 10% at 1c256, nothing past
-# 1c512.
 Lyutyi.Strike:
 	ValidTargets: Ground, Water, GroundActor, WaterActor, Trees
 	ReloadDelay: 100
@@ -316,8 +280,8 @@ Lyutyi.Strike:
 		TrailImage: smokey
 	Warhead@1Dam: SpreadDamage
 		Range: 0, 0c512, 0c768, 1c256, 1c512
-		Falloff: 100, 100, 50, 10, 0
-		Damage: 112500
+		Falloff: 100, 100, 40, 10, 0
+		Damage: 75000
 		ValidTargets: Structure
 		Versus:
 			None: 100
@@ -329,7 +293,7 @@ Lyutyi.Strike:
 	Warhead@1DamUnits: SpreadDamage
 		Range: 0, 0c512, 0c768, 1c256, 1c768, 2c0
 		Falloff: 100, 100, 60, 30, 12, 0
-		Damage: 112500
+		Damage: 75000
 		ValidTargets: GroundActor, WaterActor, Trees
 		InvalidTargets: Structure
 		Versus:
@@ -354,7 +318,6 @@ Lyutyi.Strike:
 		ValidTargets: Water, Underwater
 		InvalidTargets: Bridge
 
-# HUR agent: Tanya's anti-infantry damage (Colt45 values) from an assault rifle.
 GUR-AR:
 	Inherits: Colt45
 	Report: gun11.aud
@@ -369,7 +332,6 @@ GUR-AR:
 		ValidTargets: Ground, GroundActor, Air, AirborneActor, WaterActor, Trees
 		Inaccuracy: 171
 
-# Drone bunker: the Flame Tower's FireballLauncher values, delivered by FPV drones.
 FPV.Bunker:
 	Inherits: FPV.Drone
 	ReloadDelay: 70
@@ -387,11 +349,10 @@ FPV.Bunker:
 			Heavy: 25
 			Concrete: 20
 
-# Stugna-P: laser-beam-riding anti-tank missile; long reach, weak against infantry.
 Stugna.ATGM:
 	Inherits: ^AntiGroundMissile
-	ReloadDelay: 80
-	Range: 7c512
+	ReloadDelay: 85
+	Range: 6c512
 	MinRange: 1c0
 	Report: missile6.aud
 	Projectile: Missile
@@ -401,16 +362,14 @@ Stugna.ATGM:
 		RangeLimit: 10c0
 		TrailImage: smokey
 	Warhead@1Dam: SpreadDamage
-		Damage: 15000
+		Damage: 11000
 		Versus:
 			None: 15
 			Wood: 45
-			Light: 85
+			Light: 80
 			Heavy: 100
 			Concrete: 50
 
-# Corvette "Hetman Ivan Mazepa": Neptune cruise missiles keep the missile
-# submarine's long-range strike; anti-submarine and anti-air armament added.
 Neptune:
 	Inherits: SubMissile
 	Report: missile1.aud
@@ -424,8 +383,6 @@ SAM.Mazepa:
 	Inherits: SubMissileAA
 	Range: 8c0
 
-# Flamingo cruise missile: modelled on the GDI Ion Cannon (Tiberian Dawn) -
-# 10x damage inside one cell, falling off to 2.5 cells, no radiation.
 FlamingoStrike:
 	ValidTargets: Ground, Water, GroundActor, WaterActor, Underwater, AirborneActor, Trees
 	Warhead@1Dam_impact: SpreadDamage
@@ -451,25 +408,12 @@ FlamingoStrike:
 		Delay: 4
 		ImpactActors: false
 
-# Storm Shadow: ONE precision cruise missile with a penetrating warhead (the
-# real one carries a 450 kg BROACH tandem warhead, GPS/INS plus an imaging
-# seeker that hits within a few metres, and is built for hardened, high-value
-# targets: command posts, bunkers, depots, ships). In the game it is a point
-# strike on a single target: 120000 damage to whatever stands in the aim cell
-# (full damage only a quarter cell past the target's edge, nothing from 0c512,
-# so buildings and units in the neighbouring cells are untouched), the same
-# against every kind of armour - so it destroys any
-# building up to 120000 HP (all but the Construction Yard and War Factory, which
-# are left at 20%), any defence or air-defence site, a tank or a ship. Infantry
-# take only 10% (it is no anti-personnel weapon).
-# For comparison: the Lyutyi drone (75 kg warhead) takes 75% off a Construction
-# Yard, but it is slow and can be shot down; this missile cannot be stopped.
 StormShadow:
 	ValidTargets: Ground, Water, GroundActor, WaterActor, Trees
 	Warhead@1Dam: SpreadDamage
 		Range: 0, 0c256, 0c512
 		Falloff: 100, 100, 0
-		Damage: 120000
+		Damage: 85000
 		ValidTargets: GroundActor, WaterActor
 		Versus:
 			None: 10

@@ -23,7 +23,7 @@ World:
 		ClassName: options-starting-units.light-support
 		Factions: ukraine
 		BaseActor: mcv
-		SupportActors: e1,e1,e1,e3,e3,btr4,gepard
+		SupportActors: e1,e1,e1,e3,uavop,btr4
 		InnerSupportRadius: 3
 		OuterSupportRadius: 5
 	StartingUnits@heavyukraine:
@@ -31,7 +31,7 @@ World:
 		ClassName: options-starting-units.heavy-support
 		Factions: ukraine
 		BaseActor: mcv
-		SupportActors: e1,e1,e1,e3,e3,btr4,gepard,bulat,bulat
+		SupportActors: e1,e1,e1,e3,e3,uavop,btr4,gepard,bulat
 		InnerSupportRadius: 3
 		OuterSupportRadius: 5
 
@@ -103,8 +103,6 @@ Player:
 		BarracksTypes: barr,tent,barr.ukraine
 		ProductionTypes: barr,tent,weap,barr.ukraine
 		DefenseTypes: hbox,pbox,gun,ftur,tsla,agun,sam,dbnk,stugna
-		# one Ukrainian airfield, only for Bayraktar TB2 scouts (see
-		# UnitBuilderBotModule@rush-ukraine), after the core of the rush base
 		BuildingLimits:
 			barr.ukraine: 1
 			stek.ukraine: 1
@@ -164,27 +162,23 @@ Player:
 		BuildingDelays:
 			stugna: 21000
 	SquadManagerBotModule@rush:
-		# F-16s are interceptors: they stay home and shoot down enemy aircraft
 		ExcludeFromSquadsTypes: harv, mcv, dog, badr.bomber, u2, f16
 		NavalUnitsTypes: ss, msub, dd, ca, lst, pt, seababy, mazepa
 		AirUnitsTypes: mig, yak, heli, hind, mh60, tb2, lyutyi
 		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, silo, hpad, afld, afld.ukraine, powr, apwr, stek, barr, kenn, tent, fix, fpwr, tenf, syrf, spef, weaf, domf, fixf, fapw, atef, pdof, mslf, facf, stugna, dbnk, stek.ukraine, barr.ukraine, pokrova, flamingo, spen.ukraine
 	SquadManagerBotModule@normal:
-		# F-16s are interceptors: they stay home and shoot down enemy aircraft
 		ExcludeFromSquadsTypes: harv, mcv, dog, badr.bomber, u2, f16
 		NavalUnitsTypes: ss, msub, dd, ca, lst, pt, seababy, mazepa
 		NavalProductionTypes: spen, syrd, spen.ukraine
 		AirUnitsTypes: mig, yak, heli, hind, mh60, tb2, lyutyi
 		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, silo, hpad, afld, afld.ukraine, powr, apwr, stek, barr, kenn, tent, fix, fpwr, tenf, syrf, spef, weaf, domf, fixf, fapw, atef, pdof, mslf, facf, stugna, dbnk, stek.ukraine, barr.ukraine, pokrova, flamingo, spen.ukraine
 	SquadManagerBotModule@turtle:
-		# F-16s are interceptors: they stay home and shoot down enemy aircraft
 		ExcludeFromSquadsTypes: harv, mcv, dog, badr.bomber, u2, mnly, f16
 		NavalUnitsTypes: ss, msub, dd, ca, lst, pt, seababy, mazepa
 		NavalProductionTypes: spen, syrd, spen.ukraine
 		AirUnitsTypes: mig, yak, heli, hind, mh60, tb2, lyutyi
 		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, silo, hpad, afld, afld.ukraine, powr, apwr, stek, barr, kenn, tent, fix, fpwr, tenf, syrf, spef, weaf, domf, fixf, fapw, atef, pdof, mslf, facf, stugna, dbnk, stek.ukraine, barr.ukraine, pokrova, flamingo, spen.ukraine
 	SquadManagerBotModule@naval:
-		# F-16s are interceptors: they stay home and shoot down enemy aircraft
 		ExcludeFromSquadsTypes: harv, mcv, dog, badr.bomber, u2, f16
 		NavalUnitsTypes: ss, msub, dd, ca, lst, pt, seababy, mazepa
 		NavalProductionTypes: spen, syrd, spen.ukraine
@@ -192,6 +186,18 @@ Player:
 		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, silo, hpad, afld, afld.ukraine, powr, apwr, stek, barr, kenn, tent, fix, fpwr, tenf, syrf, spef, weaf, domf, fixf, fapw, atef, pdof, mslf, facf, stugna, dbnk, stek.ukraine, barr.ukraine, pokrova, flamingo, spen.ukraine
 
 # --- changes to vehicles.yaml
+
+2TNK:
+	Buildable:
+		Prerequisites: fix, ~vehicles.allies, ~!vehicles.ukraine, ~techlevel.medium
+
+ARTY:
+	Buildable:
+		Prerequisites: dome, ~vehicles.allies, ~!vehicles.ukraine, ~techlevel.medium
+
+MRJ:
+	Buildable:
+		Prerequisites: dome, ~vehicles.allies, ~!vehicles.ukraine, ~techlevel.high
 
 V2RL:
 	Buildable:
@@ -205,8 +211,6 @@ V2RL:
 	Buildable:
 		Prerequisites: fix, stek, ~vehicles.soviet, ~!vehicles.ukraine, ~techlevel.high
 
-# every faction has an infantry carrier: the APC for the Allies (as in the
-# original Red Alert) and the Soviets, the BTR-4 for Ukraine
 APC:
 	Buildable:
 		Prerequisites: ~!vehicles.ukraine, ~techlevel.low
@@ -243,6 +247,10 @@ MSUB:
 	Buildable:
 		Prerequisites: ~spen, stek, ~!ships.ukraine, ~techlevel.high
 
+CA:
+	Buildable:
+		Prerequisites: ~syrd, atek, ~!ships.ukraine, ~techlevel.high
+
 # --- changes to infantry.yaml
 
 DOG:
@@ -270,6 +278,10 @@ SPEN:
 IRON:
 	Buildable:
 		Prerequisites: stek, ~structures.soviet, ~!structures.ukraine, ~techlevel.unrestricted
+
+PDOX:
+	Buildable:
+		Prerequisites: atek, ~!structures.ukraine, ~techlevel.unrestricted
 
 TSLA:
 	Buildable:

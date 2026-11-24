@@ -1,0 +1,100 @@
+# Effects of the "Pokrova" EW field (POKROVA.FIELD / POKROVA.COVER in ukraine.yaml),
+# added to every ground unit, infantry and ship so the field works on any faction:
+#  ew-cover  : allied units are hidden from enemy sensors and weapon guidance
+#  ew-jammed : enemy units lose control - no movement, slow and inaccurate fire
+#  in-combat : the unit fired in the last 5 seconds; it is then also targetable as
+#              "InCombat", which only the AI looks at: it drops the field on its
+#              own units in a fight (SupportPowerBotModule in ukraine.yaml)
+
+^Vehicle:
+	GrantConditionOnAttack@INCOMBAT:
+		Condition: in-combat
+		ArmamentNames: primary, secondary
+		RevokeDelay: 125
+	Targetable@INCOMBAT:
+		RequiresCondition: in-combat
+		TargetTypes: InCombat
+	ExternalCondition@EWCOVER:
+		Condition: ew-cover
+	Cloak@EWCOVER:
+		RequiresCondition: ew-cover
+		InitialDelay: 0
+		CloakDelay: 0
+		UncloakOn: Unload, Infiltrate, Demolish
+		DetectionTypes: ElectronicWarfare
+	ExternalCondition@EWJAM:
+		Condition: ew-jammed
+	SpeedMultiplier@EWJAM:
+		RequiresCondition: ew-jammed
+		Modifier: 0
+	ReloadDelayMultiplier@EWJAM:
+		RequiresCondition: ew-jammed
+		Modifier: 400
+	InaccuracyMultiplier@EWJAM:
+		RequiresCondition: ew-jammed
+		Modifier: 500
+	WithColoredOverlay@EWJAM:
+		RequiresCondition: ew-jammed
+		Color: 3090FF60
+
+^Infantry:
+	GrantConditionOnAttack@INCOMBAT:
+		Condition: in-combat
+		ArmamentNames: primary, secondary
+		RevokeDelay: 125
+	Targetable@INCOMBAT:
+		RequiresCondition: in-combat
+		TargetTypes: InCombat
+	ExternalCondition@EWCOVER:
+		Condition: ew-cover
+	Cloak@EWCOVER:
+		RequiresCondition: ew-cover
+		InitialDelay: 0
+		CloakDelay: 0
+		UncloakOn: Unload, Infiltrate, Demolish
+		DetectionTypes: ElectronicWarfare
+	ExternalCondition@EWJAM:
+		Condition: ew-jammed
+	SpeedMultiplier@EWJAM:
+		RequiresCondition: ew-jammed
+		Modifier: 0
+	ReloadDelayMultiplier@EWJAM:
+		RequiresCondition: ew-jammed
+		Modifier: 400
+	InaccuracyMultiplier@EWJAM:
+		RequiresCondition: ew-jammed
+		Modifier: 500
+	WithColoredOverlay@EWJAM:
+		RequiresCondition: ew-jammed
+		Color: 3090FF60
+
+^Ship:
+	GrantConditionOnAttack@INCOMBAT:
+		Condition: in-combat
+		ArmamentNames: primary, secondary
+		RevokeDelay: 125
+	Targetable@INCOMBAT:
+		RequiresCondition: in-combat
+		TargetTypes: InCombat
+	ExternalCondition@EWCOVER:
+		Condition: ew-cover
+	Cloak@EWCOVER:
+		RequiresCondition: ew-cover
+		InitialDelay: 0
+		CloakDelay: 0
+		UncloakOn: Unload, Infiltrate, Demolish
+		DetectionTypes: ElectronicWarfare
+	ExternalCondition@EWJAM:
+		Condition: ew-jammed
+	SpeedMultiplier@EWJAM:
+		RequiresCondition: ew-jammed
+		Modifier: 0
+	ReloadDelayMultiplier@EWJAM:
+		RequiresCondition: ew-jammed
+		Modifier: 400
+	InaccuracyMultiplier@EWJAM:
+		RequiresCondition: ew-jammed
+		Modifier: 500
+	WithColoredOverlay@EWJAM:
+		RequiresCondition: ew-jammed
+		Color: 3090FF60

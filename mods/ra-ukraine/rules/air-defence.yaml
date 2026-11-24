@@ -1,0 +1,63 @@
+# Air defence units turn from ground targets to aircraft.
+#
+# OpenRA keeps a unit on its target until the target is gone, so a Gepard or a
+# Flak Truck busy with a tank ignores the aircraft overhead. Every enemy
+# aircraft in the air now marks the units around it (ProximityExternalCondition):
+#   enemy-air-far  : within 8c512 - the reach of the Gepard (35mm.AA 8c512), the
+#                    Flak Truck (FLAK-23-AA 8c0), the missile submarine
+#                    (SubMissileAA 8c0) and the corvette Mazepa (SAM 8c0)
+#   enemy-air-near : within 7c512 - the reach of the rocket soldier (RedEye) and
+#                    the destroyer (StingerAA)
+# While marked, the anti-ground weapon of these units is switched off: the
+# attack on the ground target ends, and the unit picks the aircraft by itself
+# (its anti-air weapon is the only one left). Once the aircraft are gone, the
+# anti-ground weapon is back and the unit returns to ground targets.
+# Works the same for players and bots, on every map.
+
+^NeutralPlane:
+	ProximityExternalCondition@AIRTHREATFAR:
+		RequiresCondition: airborne
+		Condition: enemy-air-far
+		Range: 8c512
+		ValidRelationships: Enemy
+	ProximityExternalCondition@AIRTHREATNEAR:
+		RequiresCondition: airborne
+		Condition: enemy-air-near
+		Range: 7c512
+		ValidRelationships: Enemy
+
+GEPARD:
+	ExternalCondition@AIRTHREAT:
+		Condition: enemy-air-far
+	Armament@AG:
+		RequiresCondition: !enemy-air-far
+
+FTRK:
+	ExternalCondition@AIRTHREAT:
+		Condition: enemy-air-far
+	Armament@AG:
+		RequiresCondition: !enemy-air-far
+
+MSUB:
+	ExternalCondition@AIRTHREAT:
+		Condition: enemy-air-far
+	Armament@PRIMARY:
+		RequiresCondition: !enemy-air-far
+
+MAZEPA:
+	ExternalCondition@AIRTHREAT:
+		Condition: enemy-air-far
+	Armament@NEPTUNE:
+		RequiresCondition: !enemy-air-far
+
+E3:
+	ExternalCondition@AIRTHREAT:
+		Condition: enemy-air-near
+	Armament@SECONDARY:
+		RequiresCondition: !enemy-air-near
+
+DD:
+	ExternalCondition@AIRTHREAT:
+		Condition: enemy-air-near
+	Armament@PRIMARY:
+		RequiresCondition: !enemy-air-near

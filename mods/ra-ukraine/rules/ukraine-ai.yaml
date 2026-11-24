@@ -1,0 +1,121 @@
+# Red Alert: Ukraine - rules for the bot tactics script (scripts/ukraine-ai.lua).
+#
+# The script (loaded on every map by World > LuaScript in rules/ukraine.yaml)
+# drives these units of every bot itself:
+#   all factions: apc, btr4 (infantry ferry to the front), lst (landing craft
+#                 across the water when the enemy cannot be reached by land)
+#   Ukraine:      tb2, lyutyi, f16, ratel, seababy, gur, bohdana, vilkha
+# so the bots' attack squads must leave them alone. When it starts for a bot,
+# the script grants the "ukraine-lua-ai" player condition, which swaps the
+# stock squad managers for the "-lua" variants below (same settings, those
+# units excluded). On maps whose own Lua replaces the script nothing is
+# granted and the bots keep the stock squads.
+
+# per-unit marks the script keeps (which units it has taken over, boarding)
+^ExistsInWorld:
+	ScriptTags:
+
+Player:
+	ExternalCondition@UKRAINELUAAI:
+		Condition: ukraine-lua-ai
+	# the bot type, for the script (Player.HasPrerequisites)
+	ProvidesPrerequisite@BOTRUSH:
+		Prerequisite: bot.rush
+		RequiresCondition: enable-rush-ai
+	ProvidesPrerequisite@BOTNORMAL:
+		Prerequisite: bot.normal
+		RequiresCondition: enable-normal-ai
+	ProvidesPrerequisite@BOTTURTLE:
+		Prerequisite: bot.turtle
+		RequiresCondition: enable-turtle-ai
+	ProvidesPrerequisite@BOTNAVAL:
+		Prerequisite: bot.naval
+		RequiresCondition: enable-naval-ai
+	# Ukrainian airfields: the engine lets a bot build an aircraft only while it
+	# has a free airfield for it, and the stock share (4%) gives one airfield in
+	# a normal base - the first TB2 or F-16 took it and no more drones followed.
+	# afld.ukraine is only built by Ukraine, so the other factions are unchanged.
+	BaseBuilderBotModule@normal:
+		BuildingFractions:
+			afld.ukraine: 10
+	BaseBuilderBotModule@turtle:
+		BuildingFractions:
+			afld.ukraine: 8
+	SquadManagerBotModule@rush:
+		RequiresCondition: enable-rush-ai && !ukraine-lua-ai
+	SquadManagerBotModule@normal:
+		RequiresCondition: enable-normal-ai && !ukraine-lua-ai
+	SquadManagerBotModule@turtle:
+		RequiresCondition: enable-turtle-ai && !ukraine-lua-ai
+	SquadManagerBotModule@naval:
+		RequiresCondition: enable-naval-ai && !ukraine-lua-ai
+	SquadManagerBotModule@rush-lua:
+		RequiresCondition: enable-rush-ai && ukraine-lua-ai
+		SquadSize: 20
+		NavalUnitsTypes: ss, msub, dd, ca, pt, mazepa
+		ExcludeFromSquadsTypes: harv, mcv, dog, badr.bomber, u2, f16, apc, btr4, lst, tb2, lyutyi, ratel, gur, bohdana, vilkha, seababy
+		ConstructionYardTypes: fact
+		AirUnitsTypes: mig, yak, heli, hind, mh60
+		AircraftTargetType: AirborneActor
+		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, silo, hpad, afld, afld.ukraine, powr, apwr, stek, barr, kenn, tent, fix, fpwr, tenf, syrf, spef, weaf, domf, fixf, fapw, atef, pdof, mslf, facf, stugna, dbnk, stek.ukraine, barr.ukraine, pokrova, flamingo, spen.ukraine
+		IgnoredEnemyTargetTypes: AirborneActor
+	SquadManagerBotModule@normal-lua:
+		RequiresCondition: enable-normal-ai && ukraine-lua-ai
+		SquadSize: 40
+		NavalUnitsTypes: ss, msub, dd, ca, pt, mazepa
+		ExcludeFromSquadsTypes: harv, mcv, dog, badr.bomber, u2, f16, apc, btr4, lst, tb2, lyutyi, ratel, gur, bohdana, vilkha, seababy
+		ConstructionYardTypes: fact
+		NavalProductionTypes: spen, syrd, spen.ukraine
+		AirUnitsTypes: mig, yak, heli, hind, mh60
+		AircraftTargetType: AirborneActor
+		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, silo, hpad, afld, afld.ukraine, powr, apwr, stek, barr, kenn, tent, fix, fpwr, tenf, syrf, spef, weaf, domf, fixf, fapw, atef, pdof, mslf, facf, stugna, dbnk, stek.ukraine, barr.ukraine, pokrova, flamingo, spen.ukraine
+		IgnoredEnemyTargetTypes: AirborneActor
+	SquadManagerBotModule@turtle-lua:
+		RequiresCondition: enable-turtle-ai && ukraine-lua-ai
+		SquadSize: 10
+		NavalUnitsTypes: ss, msub, dd, ca, pt, mazepa
+		ExcludeFromSquadsTypes: harv, mcv, dog, badr.bomber, u2, mnly, f16, apc, btr4, lst, tb2, lyutyi, ratel, gur, bohdana, vilkha, seababy
+		ConstructionYardTypes: fact
+		NavalProductionTypes: spen, syrd, spen.ukraine
+		AirUnitsTypes: mig, yak, heli, hind, mh60
+		AircraftTargetType: AirborneActor
+		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, silo, hpad, afld, afld.ukraine, powr, apwr, stek, barr, kenn, tent, fix, fpwr, tenf, syrf, spef, weaf, domf, fixf, fapw, atef, pdof, mslf, facf, stugna, dbnk, stek.ukraine, barr.ukraine, pokrova, flamingo, spen.ukraine
+		IgnoredEnemyTargetTypes: AirborneActor
+	SquadManagerBotModule@naval-lua:
+		RequiresCondition: enable-naval-ai && ukraine-lua-ai
+		SquadSize: 1
+		NavalUnitsTypes: ss, msub, dd, ca, pt, mazepa
+		ExcludeFromSquadsTypes: harv, mcv, dog, badr.bomber, u2, f16, apc, btr4, lst, tb2, lyutyi, ratel, gur, bohdana, vilkha, seababy
+		ConstructionYardTypes: fact
+		NavalProductionTypes: spen, syrd, spen.ukraine
+		AirUnitsTypes: mig, yak, heli, hind, mh60
+		AircraftTargetType: AirborneActor
+		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, silo, hpad, afld, afld.ukraine, powr, apwr, stek, barr, kenn, tent, fix, fpwr, tenf, syrf, spef, weaf, domf, fixf, fapw, atef, pdof, mslf, facf, stugna, dbnk, stek.ukraine, barr.ukraine, pokrova, flamingo, spen.ukraine
+		IgnoredEnemyTargetTypes: AirborneActor
+	# APCs ferry infantry: a few are enough (the Allies build them too now, see
+	# APC in ra-overrides.yaml)
+	UnitBuilderBotModule@rush:
+		UnitLimits:
+			apc: 3
+	UnitBuilderBotModule@normal:
+		UnitLimits:
+			apc: 4
+	UnitBuilderBotModule@turtle:
+		UnitLimits:
+			apc: 3
+	# the rush bot also builds a naval yard when its base is next to water (after
+	# the core of the base), for the landing craft
+	BaseBuilderBotModule@rush:
+		NavalProductionTypes: spen, syrd, spen.ukraine
+		BuildingLimits:
+			spen: 1
+			syrd: 1
+			spen.ukraine: 1
+		BuildingFractions:
+			spen: 1
+			syrd: 1
+			spen.ukraine: 1
+		BuildingDelays:
+			spen: 6000
+			syrd: 6000
+			spen.ukraine: 6000

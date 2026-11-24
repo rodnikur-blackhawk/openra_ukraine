@@ -1,0 +1,611 @@
+# Sprites for the Ukrainian (ZSU) roster. Files live in ra|bits/ukraine.
+# uavop/gur: the stock rifleman (e1.shp, same frame layout) with their kit painted on.
+# btr4/bulat/oplot/gepard: like the stock tank turrets, the turret frames carry no shadow
+# (it would land on the hull); bulat/oplot/gepard turrets also have a dark rim like the
+# stock Light Tank turret (tools/ukraine-sprites/outline_turret.py).
+
+btr4:
+	Defaults:
+		Filename: btr4.shp
+	idle:
+		Facings: 32
+		UseClassicFacings: True
+	turret:
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle:
+		Filename: minigun.shp
+		Length: 6
+		Facings: 8
+	# rear doors (WithSwitchableOverlay in the rules): 4 opening steps per facing,
+	# then the doors open and shut; only the door pixels, drawn over the body
+	doors-switch:
+		Start: 64
+		Length: 4
+		Facings: 32
+		UseClassicFacings: True
+	doors-open:
+		Start: 192
+		Facings: 32
+		UseClassicFacings: True
+	doors-closed:
+		Start: 224
+		Facings: 32
+		UseClassicFacings: True
+	icon:
+		Filename: btr4icon.shp
+
+gepard:
+	Defaults:
+		Filename: gepard.shp
+	idle:
+		Facings: 32
+		UseClassicFacings: True
+	turret:
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 2
+	icon:
+		Filename: gepardicon.shp
+
+bulat:
+	Defaults:
+		Filename: bulat.shp
+	idle:
+		Facings: 32
+		UseClassicFacings: True
+	turret:
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: bulaticon.shp
+
+bulat.destroyed:
+	Defaults:
+		Filename: bulat.shp
+		ZOffset: -512
+	idle:
+		Facings: 32
+		UseClassicFacings: True
+	turret:
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+
+oplot:
+	Defaults:
+		Filename: oplot.shp
+	idle:
+		Facings: 32
+		UseClassicFacings: True
+	turret:
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: oploticon.shp
+
+oplot.destroyed:
+	Defaults:
+		Filename: oplot.shp
+		ZOffset: -512
+	idle:
+		Facings: 32
+		UseClassicFacings: True
+	turret:
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+
+vilkha:
+	Defaults:
+		Filename: vilkha.shp
+	idle:
+		Facings: 32
+		UseClassicFacings: True
+	empty-idle:
+		Start: 32
+		Facings: 32
+		UseClassicFacings: True
+	icon:
+		Filename: vilkhaicon.shp
+
+bohdana:
+	idle:
+		Filename: bohdana.shp
+		Facings: 32
+		UseClassicFacings: True
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: bohdanaicon.shp
+
+ratel:
+	idle:
+		Filename: ratel.shp
+		Facings: 32
+		UseClassicFacings: True
+	icon:
+		Filename: ratelicon.shp
+
+tb2:
+	idle:
+		Filename: tb2.shp
+		Facings: 16
+		InterpolatedFacings: 64
+	icon:
+		Filename: tb2icon.shp
+
+# Lyutyi: grey wing and nose, fuselage in player colour (like the TB2); 16 evenly
+# spaced facings. Also used by the Lyutyi.Strike projectile (the diving drone).
+lyutyi:
+	idle:
+		Filename: lyutyi.shp
+		Facings: 16
+		InterpolatedFacings: 64
+	icon:
+		Filename: lyutyiicon.shp
+
+# Mi-8 of the air assault (AFLD.Ukraine support power): camouflaged hull in
+# player colour, 32 evenly spaced facings (the actor uses plain BodyOrientation,
+# not the classic helicopter facings); main rotor from the stock Hind.
+mi8:
+	idle:
+		Filename: mi8.shp
+		Facings: 32
+	rotor:
+		Filename: lrotorlg.shp
+		Length: 4
+	slow-rotor:
+		Filename: lrotorlg.shp
+		Start: 4
+		Length: 8
+
+f16:
+	idle:
+		Filename: f16.shp
+		Facings: 16
+		InterpolatedFacings: 64
+	icon:
+		Filename: f16icon.shp
+
+seababy:
+	idle:
+		Filename: seababy.shp
+		Facings: 16
+		InterpolatedFacings: 32
+	icon:
+		Filename: seababyicon.shp
+
+uavop:
+	Defaults:
+		Filename: uavop.shp
+	stand:
+		Facings: 8
+	stand2:
+		Start: 8
+		Facings: 8
+	idle1:
+		Facings: 8
+		Tick: 600
+	idle2:
+		Facings: 8
+		Tick: 600
+	run:
+		Start: 16
+		Length: 6
+		Facings: 8
+		Tick: 100
+	shoot:
+		Start: 64
+		Length: 8
+		Facings: 8
+	prone-stand:
+		Start: 144
+		Stride: 4
+		Facings: 8
+	prone-stand2:
+		Start: 144
+		Stride: 4
+		Facings: 8
+	prone-run:
+		Start: 144
+		Length: 4
+		Facings: 8
+		Tick: 100
+	liedown:
+		Start: 128
+		Length: 2
+		Facings: 8
+	standup:
+		Start: 176
+		Length: 2
+		Facings: 8
+	prone-shoot:
+		Start: 192
+		Length: 8
+		Facings: 8
+	parachute:
+		Filename: e1.shp
+		Start: 377
+	die1:
+		Filename: e1.shp
+		Start: 288
+		Length: 8
+		Tick: 80
+	die2:
+		Filename: e1.shp
+		Start: 296
+		Length: 8
+		Tick: 80
+	die3:
+		Filename: e1.shp
+		Start: 304
+		Length: 8
+		Tick: 80
+	die4:
+		Filename: e1.shp
+		Start: 312
+		Length: 12
+		Tick: 80
+	die5:
+		Filename: e1.shp
+		Start: 324
+		Length: 18
+		Tick: 80
+	die6:
+		Filename: electro.tem
+		TilesetFilenames:
+			SNOW: electro.sno
+		Frames: 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+		Length: *
+		Tick: 80
+	die-crushed:
+		Filename: corpse1.tem
+		TilesetFilenames:
+			SNOW: corpse1.sno
+		Length: *
+		Tick: 1600
+		ZOffset: -511
+	icon:
+		Filename: uavopicon.shp
+
+gur:
+	Defaults:
+		Filename: gur.shp
+	stand:
+		Facings: 8
+	stand2:
+		Start: 8
+		Facings: 8
+	idle1:
+		Facings: 8
+		Tick: 600
+	idle2:
+		Facings: 8
+		Tick: 600
+	run:
+		Start: 16
+		Length: 6
+		Facings: 8
+		Tick: 100
+	shoot:
+		Start: 64
+		Length: 8
+		Facings: 8
+	prone-stand:
+		Start: 144
+		Stride: 4
+		Facings: 8
+	prone-stand2:
+		Start: 144
+		Stride: 4
+		Facings: 8
+	prone-run:
+		Start: 144
+		Length: 4
+		Facings: 8
+		Tick: 100
+	liedown:
+		Start: 128
+		Length: 2
+		Facings: 8
+	standup:
+		Start: 176
+		Length: 2
+		Facings: 8
+	prone-shoot:
+		Start: 192
+		Length: 8
+		Facings: 8
+	parachute:
+		Filename: e1.shp
+		Start: 377
+	die1:
+		Filename: e1.shp
+		Start: 288
+		Length: 8
+		Tick: 80
+	die2:
+		Filename: e1.shp
+		Start: 296
+		Length: 8
+		Tick: 80
+	die3:
+		Filename: e1.shp
+		Start: 304
+		Length: 8
+		Tick: 80
+	die4:
+		Filename: e1.shp
+		Start: 312
+		Length: 12
+		Tick: 80
+	die5:
+		Filename: e1.shp
+		Start: 324
+		Length: 18
+		Tick: 80
+	die6:
+		Filename: electro.tem
+		TilesetFilenames:
+			SNOW: electro.sno
+		Frames: 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+		Length: *
+		Tick: 80
+	die-crushed:
+		Filename: corpse1.tem
+		TilesetFilenames:
+			SNOW: corpse1.sno
+		Length: *
+		Tick: 1600
+		ZOffset: -511
+	icon:
+		Filename: guricon.shp
+	garrison-muzzle: minigun
+		Filename:
+		Length: 12
+		Facings: 8
+		Combine:
+			0:
+				Filename: minigun.shp
+				Length: 12
+				Frames: 0,1,2,3,4,5,0,1,2,3,4,5
+			1:
+				Filename: minigun.shp
+				Length: 12
+				Frames: 6,7,8,9,10,11,6,7,8,9,10,11
+			2:
+				Filename: minigun.shp
+				Length: 12
+				Frames: 12,13,14,15,16,17,12,13,14,15,16,17
+			3:
+				Filename: minigun.shp
+				Length: 12
+				Frames: 18,19,20,21,22,23,18,19,20,21,22,23
+			4:
+				Filename: minigun.shp
+				Length: 12
+				Frames: 24,25,26,27,28,29,24,25,26,27,28,29
+			5:
+				Filename: minigun.shp
+				Length: 12
+				Frames: 30,31,32,33,34,35,30,31,32,33,34,35
+			6:
+				Filename: minigun.shp
+				Length: 12
+				Frames: 36,37,38,39,40,41,36,37,38,39,40,41
+			7:
+				Filename: minigun.shp
+				Length: 12
+				Frames: 42,43,44,45,46,47,42,43,44,45,46,47
+
+fpv:
+	idle:
+		Filename: fpv.shp
+		Facings: 32
+		ZOffset: 1023
+
+dbnk:
+	Defaults:
+		Filename: dbnk.shp
+	idle:
+	damaged-idle:
+		Start: 1
+	# launch: the hatch opens, the drone climbs out, the hatch closes
+	fire:
+		Start: 2
+		Length: 8
+		Tick: 80
+	damaged-fire:
+		Start: 10
+		Length: 8
+		Tick: 80
+	make:
+		Filename: dbnkmake.shp
+		Length: *
+	bib:
+		TilesetFilenames:
+			SNOW: mbFTUR.sno
+			INTERIOR: mbFTUR.int
+			TEMPERAT: mbFTUR.tem
+			DESERT: mbFTUR.des
+		Length: *
+	icon:
+		Filename: dbnkicon.shp
+
+stugna:
+	Defaults:
+		Filename: stugna.shp
+	idle:
+	damaged-idle:
+		Start: 1
+	make:
+		Filename: stugnamake.shp
+		Length: *
+	turret:
+		Start: 2
+		Facings: 32
+		UseClassicFacings: True
+	recoil:
+		Start: 34
+		Facings: 32
+		UseClassicFacings: True
+	damaged-turret:
+		Start: 66
+		Facings: 32
+		UseClassicFacings: True
+	damaged-recoil:
+		Start: 98
+		Facings: 32
+		UseClassicFacings: True
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	bib:
+		TilesetFilenames:
+			SNOW: mbGUN.sno
+			INTERIOR: mbGUN.int
+			TEMPERAT: mbGUN.tem
+			DESERT: mbGUN.des
+		Length: *
+		Offset: -1,-1
+	icon:
+		Filename: stugnaicon.shp
+
+mazepa:
+	idle:
+		Filename: mazepa.shp
+		Facings: 16
+		InterpolatedFacings: 32
+	icon:
+		Filename: mazepaicon.shp
+
+flamingo:
+	Defaults:
+		Filename: flamingo.shp
+	idle:
+	damaged-idle:
+		Start: 1
+	active:
+		Start: 2
+		Length: 7
+		Tick: 80
+	damaged-active:
+		Start: 9
+		Length: 7
+		Tick: 80
+	make:
+		Filename: flamingomake.shp
+		Length: *
+	icon:
+		Filename: flamingoicon.shp
+
+flamingo.missile:
+	up:
+		Filename: flamingomsl.shp
+		Length: 4
+		ZOffset: 1023
+	down:
+		Filename: flamingomsl.shp
+		Start: 4
+		Length: 4
+		ZOffset: 1023
+
+stormshadow.missile:
+	up:
+		Filename: stormshadow.shp
+		Length: 4
+		ZOffset: 1023
+	down:
+		Filename: stormshadow.shp
+		Start: 4
+		Length: 4
+		ZOffset: 1023
+
+# three Storm Shadows in a V: the incoming strike before it splits up over the target
+stormshadow3.missile:
+	up:
+		Filename: stormshadow3.shp
+		Length: 4
+		ZOffset: 1023
+	down:
+		Filename: stormshadow3.shp
+		Start: 4
+		Length: 4
+		ZOffset: 1023
+
+pokrova:
+	Defaults:
+		Filename: pokrova.shp
+	idle:
+		Offset: 0,-4
+	damaged-idle:
+		Start: 1
+		Offset: 0,-4
+	# activation: a blue beam climbs out of the top of the radar, pulses for
+	# a few seconds and fades (19 frames x 160 ms, about 3 s)
+	active:
+		Frames: 2, 3, 4, 5, 6, 4, 5, 6, 4, 5, 6, 4, 5, 6, 4, 5, 6, 7, 8
+		Length: 19
+		Tick: 160
+		Offset: 0,-4
+	damaged-active:
+		Frames: 9, 10, 11, 12, 13, 11, 12, 13, 11, 12, 13, 11, 12, 13, 11, 12, 13, 14, 15
+		Length: 19
+		Tick: 160
+		Offset: 0,-4
+	make:
+		Filename: pokrovamake.shp
+		Length: *
+		Offset: 0,-4
+	bib:
+		TilesetFilenames:
+			SNOW: mbIRON.sno
+			INTERIOR: mbIRON.int
+			TEMPERAT: mbIRON.tem
+			DESERT: mbIRON.des
+		Length: *
+		Offset: 0,-2
+	icon:
+		Filename: pokrovaicon.shp
+
+# Ukrainian Naval Base (SPEN.Ukraine): the stock Sub Pen picture, labelled "NAVAL BASE"
+spen:
+	icon-ukraine:
+		Filename: spenukricon.shp
+
+# support power buttons and launch beacon posters
+icon:
+	flamingo:
+		Filename: flamingoicon.shp
+	pokrova:
+		Filename: pokrovaicon.shp
+	stormshadow:
+		Filename: stormshadowicon.shp
+	heliassault:
+		Filename: heliassaulticon.shp
+
+# Strike-site beacon posters: 32x24 (like the stock lo-res posters) so they fit
+# inside the beacon clock frame, raised above the beacon arrow like atomicon.
+beacon:
+	flamingoicon:
+		Filename: flamingobcn.shp
+		Length: *
+		Offset: 0,-42
+	stormshadowicon:
+		Filename: stormshadowbcn.shp
+		Length: *
+		Offset: 0,-42

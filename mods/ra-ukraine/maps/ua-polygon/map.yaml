@@ -1,0 +1,42 @@
+MapFormat: 12
+
+RequiresMod: ra
+
+Title: UA Proving Ground (Полігон 1.3.0)
+
+Author: Red Alert: Ukraine
+
+Tileset: TEMPERAT
+
+MapSize: 128,128
+
+Bounds: 34,30,58,58
+
+Visibility: Lobby
+
+Categories: Minigame
+
+Players:
+	PlayerReference@Neutral:
+		Name: Neutral
+		OwnsWorld: True
+		NonCombatant: True
+		Faction: allies
+	PlayerReference@Creeps:
+		Name: Creeps
+		NonCombatant: True
+		Faction: russia
+		Enemies: Multi0
+	PlayerReference@Multi0:
+		Name: Multi0
+		Playable: True
+		Faction: ukraine
+		LockFaction: True
+		Enemies: Creeps
+
+Actors:
+	Actor0: mpspawn
+		Owner: Neutral
+		Location: 44,41
+
+Rules: rules.yaml

@@ -1,0 +1,9 @@
+# --- changes to voices.yaml
+
+GenericVoice:
+	Variants:
+		ukraine: .v01,.v03
+
+VehicleVoice:
+	Variants:
+		ukraine: .v00,.v02

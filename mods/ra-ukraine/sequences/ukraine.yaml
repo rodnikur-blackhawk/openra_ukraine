@@ -582,6 +582,16 @@ pokrova:
 		Length: 19
 		Tick: 160
 		Offset: 0,-4
+	beam-idle:
+		Filename: pokrovabeam.shp
+	beam-active:
+		Filename: pokrovabeam.shp
+		Frames: 1, 2, 3, 4, 5, 3, 4, 5, 3, 4, 5, 3, 4, 5, 3, 4, 5, 6, 7
+		Length: 19
+		Tick: 160
+		Scale: 4
+		Offset: 0,-490
+		ZOffset: 1024
 	make:
 		Filename: pokrovamake.shp
 		Length: *

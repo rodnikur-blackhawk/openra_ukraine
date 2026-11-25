@@ -595,6 +595,13 @@ POKROVA:
 		Description: actor-pokrova.description
 	Tooltip:
 		Name: actor-pokrova.name
+	WithSpriteBody@BEAM:
+		Name: beam
+		Sequence: beam-idle
+	WithSupportPowerActivationAnimation@BEAM:
+		Body: beam
+		Sequence: beam-active
+		RequiresCondition: !build-incomplete
 	WithSupportPowerActivationAnimation:
 		RequiresCondition: !build-incomplete
 	Selectable:

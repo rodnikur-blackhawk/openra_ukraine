@@ -356,6 +356,9 @@ F16:
 	Aircraft:
 		Speed: 256
 		TurnSpeed: 18
+		# parks on the runway (the airfield's pad) when it has nothing to do,
+		# instead of circling over the base
+		IdleBehavior: ReturnToBase
 	AmmoPool:
 		Ammo: 6
 	Contrail@1:
@@ -372,6 +375,7 @@ LYUTYI:
 	Inherits: YAK
 	Buildable:
 		BuildPaletteOrder: 40
+		BuildAtProductionType: Lyutyi
 		Prerequisites: ~afld, stek.ukraine, ~aircraft.ukraine, ~techlevel.high
 		Description: actor-lyutyi.description
 	Valued:
@@ -395,11 +399,35 @@ LYUTYI:
 	Aircraft:
 		Speed: 110
 		TurnSpeed: 16
+		# waits on the catapult of its airfield (its landing spot) until it is
+		# sent at a target; the catapult cell is not part of the airfield, so
+		# it stands there on the ground
+		TakeOffOnCreation: false
+		LandableTerrainTypes: Clear, Rough, Road, Ore, Gems, Beach, Bridge
 	AmmoPool:
 		Ammo: 1
 	-WithAmmoPipsDecoration:
 	-Contrail:
 	-EjectOnDeath:
+	# on the catapult it lies on the launch rail, nose up along it ("rail"
+	# sequence); in the air the normal sprite and its shadow
+	WithFacingSpriteBody:
+		RequiresCondition: airborne
+	WithFacingSpriteBody@RAIL:
+		Name: rail
+		Sequence: rail
+		RequiresCondition: !airborne
+	WithShadow:
+		RequiresCondition: airborne
+	# spent in its strike, so it needs no landing pad to rearm: the airfield's
+	# pad stays for the F-16 / TB2 (and the Lyutyi does not count against it
+	# in the bots' aircraft limit)
+	-Rearmable:
+	ProximityExternalCondition@CATAPULT:
+		Condition: catapult-loaded
+		Range: 1c256
+		ValidRelationships: Ally
+		RequiresCondition: !airborne
 	GrantConditionOnAttack@STRIKE:
 		Condition: striking
 		ArmamentNames: primary
@@ -718,6 +746,52 @@ FLAMINGO:
 AFLD.Ukraine:
 	Buildable:
 		Description: actor-afld-ukraine-zsu.description
+	Tooltip:
+		Name: actor-afld-ukraine-zsu.name
+	Exit@1:
+		RequiresCondition: !being-captured
+		ExitCell: 1,1
+		Facing: 768
+		Priority: 2
+		ProductionTypes: Plane, Aircraft
+	# The airfield holds two aircraft: one on the landing pad (F-16 / TB2, the
+	# stock Reservable pad) and one Lyutyi on the catapult. The catapult stands
+	# on the apron next to the hangar, off the runway. A Lyutyi waiting on it
+	# marks the airfield "catapult-loaded" (ProximityExternalCondition on
+	# LYUTYI), which closes the Lyutyi exit until it has been launched.
+	# The catapult cell (top right) is left out of the footprint: an aircraft
+	# standing on an occupied airfield cell takes the airfield's landing pad
+	# for itself (and the next aircraft built there pushes it into the air),
+	# so the Lyutyi waits on a cell of its own and the pad stays for the F-16.
+	Building:
+		Footprint: xx_ xxx
+		Dimensions: 3,2
+	ExternalCondition@CATAPULT:
+		Condition: catapult-loaded
+	Exit@2:
+		RequiresCondition: !being-captured
+		# world offset (east, south, up), unlike the overlay offset below:
+		# over the catapult, in the cell left out of the footprint
+		SpawnOffset: 853,-640,0
+		ExitCell: 2,0
+		Facing: 256
+		Priority: 1
+		ProductionTypes: Lyutyi
+	# Lyutyi drones come out of a production of their own, paused while the
+	# catapult holds one: the next Lyutyi waits in the queue
+	Production:
+		Produces: Aircraft, Plane
+	Production@CATAPULT:
+		Produces: Aircraft, Lyutyi
+		PauseOnCondition: catapult-loaded
+	WithIdleOverlay@CATAPULT:
+		Image: afld.catapult
+		Sequence: idle
+		# body offset: on the apron at the right end, off the runway and clear
+		# of the F-16 parked in the middle, over the catapult cell left out of
+		# the footprint (where the Lyutyi stands)
+		Offset: 640,853,0
+		RequiresCondition: !build-incomplete
 	-AirstrikePower@parabombs:
 	AirstrikePower@spyplane:
 		Prerequisites: aircraft.soviet, !aircraft.ukraine

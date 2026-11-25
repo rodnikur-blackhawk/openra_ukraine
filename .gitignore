@@ -1,0 +1,10 @@
+# Only the mod is kept in this repository (the layout of the release archive):
+# the OpenRA installation around it is ignored.
+/*
+!/.gitignore
+!/README.md
+!/INSTALL.md
+!/RedAlert-Ukraine.cmd
+!/mods/
+/mods/*
+!/mods/ra-ukraine/

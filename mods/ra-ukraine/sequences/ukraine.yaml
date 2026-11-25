@@ -155,6 +155,13 @@ lyutyi:
 		Filename: lyutyi.shp
 		Facings: 16
 		InterpolatedFacings: 64
+	# waiting on the airfield catapult: lying on the launch rail, nose up along
+	# it (tools/ukraine-sprites/lyutyi_rail.py)
+	rail:
+		Filename: lyutyirail.shp
+		Facings: 1
+		Offset: 2,5
+		ZOffset: 512
 	icon:
 		Filename: lyutyiicon.shp
 
@@ -586,6 +593,17 @@ pokrova:
 spen:
 	icon-ukraine:
 		Filename: spenukricon.shp
+
+# Catapult launcher mounted on the Ukrainian Airfield for Lyutyi kamikaze drones
+afld.catapult:
+	Defaults:
+		Filename: afldcatapult.shp
+		# drawn under the units, like the airfield itself (ZOffset -1023): the
+		# Lyutyi waiting on it lies on top of the rail, not under it
+		ZOffset: -1023
+	idle:
+	damaged-idle:
+		Start: 1
 
 # support power buttons and launch beacon posters
 icon:

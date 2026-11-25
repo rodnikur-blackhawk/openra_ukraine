@@ -595,6 +595,8 @@ POKROVA:
 		Description: actor-pokrova.description
 	Tooltip:
 		Name: actor-pokrova.name
+	WithSupportPowerActivationAnimation:
+		RequiresCondition: !build-incomplete
 	Selectable:
 		Class: pokrova
 	SpawnActorPower@POKROVA:

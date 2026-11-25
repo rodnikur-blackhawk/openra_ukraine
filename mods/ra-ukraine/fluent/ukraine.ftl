@@ -196,8 +196,10 @@ actor-pokrova =
 actor-pokrova-field-name = EW Field
 
 actor-afld-ukraine-zsu =
+    .name = Ukrainian Airfield
     .description =
     Produces and reloads aircraft.
+    Launches Lyutyi drones from its catapult.
       Special Ability: Mi-8 Air Assault
       Special Ability: Storm Shadow
     .power-name = Storm Shadow

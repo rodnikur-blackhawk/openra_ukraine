@@ -687,10 +687,10 @@ FLAMINGO:
 		BuildPaletteOrder: 140
 		Prerequisites: stek.ukraine, ~structures.ukraine, ~techlevel.unrestricted
 		BuildLimit: 3
+		Description: actor-flamingo.description
 	# Register each launcher explicitly so the tech tree counts every copy.
 	ProvidesPrerequisite@BUILD_LIMIT:
 		Prerequisite: flamingo
-		Description: actor-flamingo.description
 	Building:
 		Footprint: xx
 		Dimensions: 2,1

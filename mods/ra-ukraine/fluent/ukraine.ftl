@@ -179,7 +179,7 @@ actor-flamingo =
     .description =
     Provides a cruise missile strike.
     Requires power to operate.
-    Up to three launch positions per player.
+    Maximum of three can be build.
       Special Ability: Flamingo Strike
     .power-name = Flamingo Strike
     .power-description = Launches a cruise missile that devastates

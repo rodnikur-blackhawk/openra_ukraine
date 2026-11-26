@@ -503,6 +503,7 @@ mazepa:
 flamingo:
 	Defaults:
 		Filename: flamingo.shp
+		Scale: 1.3
 	idle:
 	damaged-idle:
 		Start: 1
@@ -524,9 +525,11 @@ flamingo:
 			TEMPERAT: mbIRON.tem
 			DESERT: mbIRON.des
 		Length: *
-		Offset: 0,-2
+		Scale: 1
+		Offset: 0,4
 	icon:
 		Filename: flamingoicon.shp
+		Scale: 1
 
 flamingo.missile:
 	up:

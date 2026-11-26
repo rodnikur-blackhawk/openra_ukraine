@@ -518,6 +518,17 @@ flamingo:
 	make:
 		Filename: flamingomake.shp
 		Length: *
+	tractor-parked:
+		Filename: flamingovehicles.shp
+		ZOffset: 64
+	tractor-wreck:
+		Filename: flamingovehicles.shp
+		Start: 1
+		ZOffset: 64
+	trailer-scorch:
+		Filename: flamingovehicles.shp
+		Start: 2
+		ZOffset: 64
 	flag:
 		Filename: ctflag.shp
 		Length: 9
@@ -536,6 +547,20 @@ flamingo:
 	icon:
 		Filename: flamingoicon.shp
 		Scale: 1
+
+flamingo.delivery:
+	idle:
+		Filename: flamingovehicles.shp
+		Start: 3
+		Facings: 8
+		Scale: 1.3
+
+flamingo.tractor:
+	idle:
+		Filename: flamingovehicles.shp
+		Start: 11
+		Facings: 8
+		Scale: 1.3
 
 flamingo.missile:
 	up:

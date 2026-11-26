@@ -1,7 +1,7 @@
 # Proving ground: the stock air assault script plus the range script.
 World:
 	LuaScript:
-		Scripts: ukraine-heliassault.lua, ua-polygon.lua
+		Scripts: ukraine-heliassault.lua, ukraine-flamingo.lua, ua-polygon.lua
 
 # no fog, whole map revealed, no victory screen (there is no real enemy)
 Player:

@@ -591,6 +591,7 @@ pokrova:
 		Tick: 80
 		Scale: 4
 		Offset: 1.25,-491
+		Alpha: 0.55
 		ZOffset: 1024
 	make:
 		Filename: pokrovamake.shp

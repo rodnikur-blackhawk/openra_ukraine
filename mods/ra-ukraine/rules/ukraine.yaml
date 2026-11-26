@@ -784,7 +784,7 @@ FLAMINGO:
 	Mobile:
 		Locomotor: wheeled
 		Speed: 104
-		TurnSpeed: 32
+		TurnSpeed: 20
 	WithFacingSpriteBody:
 	HiddenUnderFog:
 	Interactable:

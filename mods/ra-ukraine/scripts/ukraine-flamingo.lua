@@ -80,7 +80,10 @@ local function StartDelivery(building, state)
 
 	state.owner = building.Owner
 	state.delivery = building.GrantCondition("build-incomplete", DateTime.Seconds(35))
-	state.vehicle = Actor.Create("flamingo.delivery", true, { Owner = state.owner, Location = origin })
+	local heading = Map.CenterOfCell(origin) - yard.CenterPosition
+	state.vehicle = Actor.Create("flamingo.delivery", true, {
+		Owner = state.owner, Location = origin, Facing = heading.Facing
+	})
 	state.vehicle.Move(dest)
 	state.destination = dest
 	state.deadline = ticks + DateTime.Seconds(32)
@@ -115,7 +118,7 @@ local function UpdateDelivery(building, state)
 	end
 
 	-- Reveal the trailer at its reserved footprint; drive the detached cab clear.
-	local origin = vehicle.Location
+	local origin, facing = vehicle.Location, vehicle.Facing
 	local parking = FreeCell(building.Location.X - 1, building.Location.Y + 1) or AdjacentCell(origin)
 	if not parking then
 		EndDelivery(building, state)
@@ -132,7 +135,9 @@ local function UpdateDelivery(building, state)
 			EndDelivery(building, state)
 			return
 		end
-		state.vehicle = Actor.Create("flamingo.tractor", true, { Owner = state.owner, Location = origin })
+		state.vehicle = Actor.Create("flamingo.tractor", true, {
+			Owner = state.owner, Location = origin, Facing = facing
+		})
 		state.vehicle.Move(parking)
 		state.phase = "parking"
 		state.deadline = ticks + DateTime.Seconds(4)

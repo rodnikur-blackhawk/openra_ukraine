@@ -496,6 +496,8 @@ MAZEPA:
 		DecorationBounds: 1877, 1877
 
 SEABABY:
+	Targetable@LYUTYI:
+		TargetTypes: LyutyiSeaBaby
 	Inherits: ^Ship
 	Buildable:
 		Queue: Ship

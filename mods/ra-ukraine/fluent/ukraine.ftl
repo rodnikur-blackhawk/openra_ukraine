@@ -92,6 +92,7 @@ actor-lyutyi =
     .description =
     Slow long-range kamikaze drone.
     Can only be used once.
+    Direct hits destroy ground vehicles. A full-health Mammoth Tank survives with 25% health.
       Strong vs Buildings, Infantry and Vehicles
       Weak vs Anti-Air
       Special Ability: Kamikaze

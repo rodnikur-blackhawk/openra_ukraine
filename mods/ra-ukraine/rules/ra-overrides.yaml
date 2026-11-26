@@ -208,6 +208,8 @@ V2RL:
 		Prerequisites: fix, ~vehicles.soviet, ~!vehicles.ukraine, ~techlevel.medium
 
 4TNK:
+	Targetable@MAMMOTH:
+		TargetTypes: MammothTank
 	Buildable:
 		Prerequisites: fix, stek, ~vehicles.soviet, ~!vehicles.ukraine, ~techlevel.high
 
@@ -314,3 +316,7 @@ KENN:
 MSLO:
 	Buildable:
 		Prerequisites: techcenter, ~!structures.ukraine, ~techlevel.unrestricted
+
+PT:
+	Targetable@LYUTYI:
+		TargetTypes: LyutyiPatrolBoat

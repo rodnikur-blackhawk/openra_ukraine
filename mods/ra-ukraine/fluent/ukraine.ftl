@@ -66,6 +66,7 @@ actor-ratel =
     .description =
     Remote-controlled unmanned ground kamikaze drone.
     Detonates on contact.
+    Destroys buildings in one to three hits, depending on their health.
       Strong vs Vehicles and Buildings
       Weak vs Infantry and Aircraft
       Special Ability: Kamikaze
@@ -92,6 +93,7 @@ actor-lyutyi =
     .description =
     Slow long-range kamikaze drone.
     Can only be used once.
+    Direct hits destroy ground vehicles. A full-health Mammoth Tank survives with 25% health.
       Strong vs Buildings, Infantry and Vehicles
       Weak vs Anti-Air
       Special Ability: Kamikaze
@@ -177,7 +179,7 @@ actor-flamingo =
     .description =
     Provides a cruise missile strike.
     Requires power to operate.
-    Maximum of two can be built.
+    Maximum of three can be build.
       Special Ability: Flamingo Strike
     .power-name = Flamingo Strike
     .power-description = Launches a cruise missile that devastates

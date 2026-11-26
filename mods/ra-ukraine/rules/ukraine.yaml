@@ -675,6 +675,7 @@ POKROVA.COVER:
 
 FLAMINGO:
 	Inherits: ^ScienceBuilding
+	ScriptTags:
 	Inherits@IDISABLE: ^DisableOnLowPowerOrPowerDown
 	Inherits@shape: ^2x1Shape
 	Valued:
@@ -685,8 +686,11 @@ FLAMINGO:
 		Queue: Defense
 		BuildPaletteOrder: 140
 		Prerequisites: stek.ukraine, ~structures.ukraine, ~techlevel.unrestricted
-		BuildLimit: 2
+		BuildLimit: 3
 		Description: actor-flamingo.description
+	# Register each launcher explicitly so the tech tree counts every copy.
+	ProvidesPrerequisite@BUILD_LIMIT:
+		Prerequisite: flamingo
 	Building:
 		Footprint: xx
 		Dimensions: 2,1
@@ -705,6 +709,8 @@ FLAMINGO:
 	RevealsShroud@GAPGEN:
 		Range: 5c0
 		RequiresCondition: !disabled
+	WithBuildingBib:
+		HasMinibib: true
 	SupportPowerChargeBar:
 	InfiltrateForSupportPowerReset:
 		Types: SpyInfiltrate
@@ -715,6 +721,22 @@ FLAMINGO:
 		Amount: -150
 	MustBeDestroyed:
 		RequiredForShortGame: false
+	ExternalCondition@TRACTORWRECK:
+		Condition: flamingo-tractor-wrecked
+	ExternalCondition@SCORCHED:
+		Condition: flamingo-scorched
+	WithIdleOverlay@TRACTOR:
+		Sequence: tractor-parked
+		RequiresCondition: !build-incomplete && !flamingo-tractor-wrecked
+	WithIdleOverlay@TRACTORWRECK:
+		Sequence: tractor-wreck
+		RequiresCondition: !build-incomplete && flamingo-tractor-wrecked
+	WithIdleOverlay@SCORCH:
+		Sequence: trailer-scorch
+		RequiresCondition: !build-incomplete && flamingo-scorched
+	WithIdleOverlay@FLAG:
+		Sequence: flag
+		RequiresCondition: !build-incomplete
 	WithSupportPowerActivationAnimation:
 		RequiresCondition: !build-incomplete
 	Selectable:
@@ -722,7 +744,7 @@ FLAMINGO:
 		Bounds: 2048, 1024
 	NukePower@flamingo:
 		OrderName: FlamingoStrike
-		PauseOnCondition: disabled
+		PauseOnCondition: disabled || build-incomplete
 		AllowMultiple: True
 		Cursor: nuke
 		Icon: flamingo
@@ -738,7 +760,8 @@ FLAMINGO:
 		IncomingTextNotification: notification-flamingo-launch-detected
 		MissileWeapon: FlamingoStrike
 		MissileImage: flamingo.missile
-		MissileDelay: 5
+		# Eight 75 ms lift frames at the default tick rate.
+		MissileDelay: 24
 		SpawnOffset: 0,-427,600
 		DisplayTimerRelationships: Ally, Neutral, Enemy
 		DisplayBeacon: True
@@ -861,7 +884,7 @@ HELIASSAULT.MARKER:
 
 World:
 	LuaScript:
-		Scripts: ukraine-heliassault.lua, ukraine-ai.lua
+		Scripts: ukraine-heliassault.lua, ukraine-ai.lua, ukraine-flamingo.lua
 
 MI8:
 	Inherits: ^Helicopter

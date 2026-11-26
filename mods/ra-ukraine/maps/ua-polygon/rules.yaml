@@ -1,10 +1,15 @@
 # Proving ground: the stock air assault script plus the range script.
 World:
 	LuaScript:
-		Scripts: ukraine-heliassault.lua, ua-polygon.lua
+		Scripts: ukraine-heliassault.lua, ukraine-flamingo.lua, ua-polygon.lua
 
 # no fog, whole map revealed, no victory screen (there is no real enemy)
 Player:
+	DeveloperMode:
+		CheckboxEnabled: True
+		CheckboxLocked: True
+		FastBuild: True
+		FastCharge: True
 	-ConquestVictoryConditions:
 	Shroud:
 		FogCheckboxEnabled: False
@@ -12,18 +17,9 @@ Player:
 		ExploredMapCheckboxEnabled: True
 		ExploredMapCheckboxLocked: True
 
-# airfield powers keep their normal recharge (Mi-8: 5 min, like the Paratroopers)
-# but are ready at the start; fast production for testing
+# Airfield powers are also ready immediately when the airfield is placed.
 AFLD.Ukraine:
 	SpawnActorPower@heliassault:
 		StartFullyCharged: True
 	NukePower@stormshadow:
 		StartFullyCharged: True
-
-LYUTYI:
-	Buildable:
-		BuildDuration: 150
-
-UAVOP:
-	Buildable:
-		BuildDuration: 75

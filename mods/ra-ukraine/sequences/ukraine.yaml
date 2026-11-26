@@ -503,22 +503,54 @@ mazepa:
 flamingo:
 	Defaults:
 		Filename: flamingo.shp
+		Scale: 1.3
 	idle:
 	damaged-idle:
 		Start: 1
 	active:
 		Start: 2
-		Length: 7
-		Tick: 80
+		Length: 20
+		Tick: 75
 	damaged-active:
-		Start: 9
-		Length: 7
-		Tick: 80
+		Start: 22
+		Length: 20
+		Tick: 75
 	make:
 		Filename: flamingomake.shp
+		Scale: 1
 		Length: *
+		Tick: 90
+	tractor-parked:
+		Filename: flamingovehicles.shp
+		Scale: 1
+		ZOffset: 64
+	tractor-wreck:
+		Filename: flamingovehicles.shp
+		Scale: 1
+		Start: 1
+		ZOffset: 64
+	trailer-scorch:
+		Filename: flamingovehicles.shp
+		Start: 2
+		ZOffset: 64
+	flag:
+		Filename: ctflag.shp
+		Length: 9
+		Tick: 50
+		Scale: 0.85
+		Offset: 23,-4
+	bib:
+		TilesetFilenames:
+			SNOW: mbIRON.sno
+			INTERIOR: mbIRON.int
+			TEMPERAT: mbIRON.tem
+			DESERT: mbIRON.des
+		Length: *
+		Scale: 1
+		Offset: 0,4
 	icon:
 		Filename: flamingoicon.shp
+		Scale: 1
 
 flamingo.missile:
 	up:
@@ -591,6 +623,7 @@ pokrova:
 		Tick: 80
 		Scale: 4
 		Offset: 1.25,-491
+		Alpha: 0.55
 		ZOffset: 1024
 	make:
 		Filename: pokrovamake.shp

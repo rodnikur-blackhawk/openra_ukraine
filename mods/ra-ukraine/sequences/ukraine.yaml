@@ -509,12 +509,12 @@ flamingo:
 		Start: 1
 	active:
 		Start: 2
-		Length: 12
-		Tick: 80
+		Length: 20
+		Tick: 75
 	damaged-active:
-		Start: 14
-		Length: 12
-		Tick: 80
+		Start: 22
+		Length: 20
+		Tick: 75
 	make:
 		Filename: flamingomake.shp
 		Length: *

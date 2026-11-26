@@ -743,7 +743,8 @@ FLAMINGO:
 		IncomingTextNotification: notification-flamingo-launch-detected
 		MissileWeapon: FlamingoStrike
 		MissileImage: flamingo.missile
-		MissileDelay: 5
+		# Eight 75 ms lift frames at the default tick rate.
+		MissileDelay: 24
 		SpawnOffset: 0,-427,600
 		DisplayTimerRelationships: Ally, Neutral, Enemy
 		DisplayBeacon: True

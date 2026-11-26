@@ -705,6 +705,8 @@ FLAMINGO:
 	RevealsShroud@GAPGEN:
 		Range: 5c0
 		RequiresCondition: !disabled
+	WithBuildingBib:
+		HasMinibib: true
 	SupportPowerChargeBar:
 	InfiltrateForSupportPowerReset:
 		Types: SpyInfiltrate

@@ -517,6 +517,14 @@ flamingo:
 	make:
 		Filename: flamingomake.shp
 		Length: *
+	bib:
+		TilesetFilenames:
+			SNOW: mbIRON.sno
+			INTERIOR: mbIRON.int
+			TEMPERAT: mbIRON.tem
+			DESERT: mbIRON.des
+		Length: *
+		Offset: 0,-2
 	icon:
 		Filename: flamingoicon.shp
 

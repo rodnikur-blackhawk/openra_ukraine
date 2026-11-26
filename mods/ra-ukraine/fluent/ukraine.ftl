@@ -66,6 +66,7 @@ actor-ratel =
     .description =
     Remote-controlled unmanned ground kamikaze drone.
     Detonates on contact.
+    Destroys buildings in one to three hits, depending on their health.
       Strong vs Vehicles and Buildings
       Weak vs Infantry and Aircraft
       Special Ability: Kamikaze

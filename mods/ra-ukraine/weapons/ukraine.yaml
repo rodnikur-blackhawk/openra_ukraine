@@ -145,9 +145,9 @@ RatelCharge:
 			Concrete: 50
 		AffectsParent: true
 		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
-	Warhead@1DamBuildings: HealthPercentageDamage
+	Warhead@1DamBuildings: TargetDamage
 		Spread: 1c256
-		Damage: 34
+		Damage: 65000
 		ValidTargets: Structure
 		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
 	Warhead@2Smu: LeaveSmudge

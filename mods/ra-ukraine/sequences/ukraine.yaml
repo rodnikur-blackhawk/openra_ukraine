@@ -553,14 +553,14 @@ flamingo.delivery:
 		Filename: flamingovehicles.shp
 		Start: 3
 		Facings: -8
-		Scale: 1.0
+		Scale: 0.6
 
 flamingo.tractor:
 	idle:
 		Filename: flamingovehicles.shp
 		Start: 11
 		Facings: -8
-		Scale: 1.0
+		Scale: 0.6
 
 flamingo.missile:
 	up:

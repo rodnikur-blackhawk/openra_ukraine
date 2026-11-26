@@ -717,6 +717,9 @@ FLAMINGO:
 		Amount: -150
 	MustBeDestroyed:
 		RequiredForShortGame: false
+	WithIdleOverlay@FLAG:
+		Sequence: flag
+		RequiresCondition: !build-incomplete
 	WithSupportPowerActivationAnimation:
 		RequiresCondition: !build-incomplete
 	Selectable:

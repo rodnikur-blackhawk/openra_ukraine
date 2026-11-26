@@ -518,6 +518,12 @@ flamingo:
 	make:
 		Filename: flamingomake.shp
 		Length: *
+	flag:
+		Filename: ctflag.shp
+		Length: 9
+		Tick: 50
+		Scale: 0.85
+		Offset: 23,-4
 	bib:
 		TilesetFilenames:
 			SNOW: mbIRON.sno

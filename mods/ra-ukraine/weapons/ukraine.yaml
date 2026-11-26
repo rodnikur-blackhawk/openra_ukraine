@@ -295,7 +295,7 @@ Lyutyi.Strike:
 		Falloff: 100, 100, 60, 30, 12, 0
 		Damage: 75000
 		ValidTargets: GroundActor, WaterActor, Trees
-		InvalidTargets: Structure, LyutyiPatrolBoat, LyutyiSeaBaby
+		InvalidTargets: Structure, LyutyiPatrolBoat
 		Versus:
 			None: 40
 			Wood: 100
@@ -317,7 +317,7 @@ Lyutyi.Strike:
 		Damage: 47250
 		ValidTargets: MammothTank
 		DamageTypes: TriggerProne, ExplosionDeath
-	# Keep the usual falloff beyond the point where it could sink these hulls in one hit.
+	# Keep the usual falloff beyond the point where it could sink the patrol boat in one hit.
 	Warhead@PatrolBoat: SpreadDamage
 		Range: 0, 0c525, 0c768, 1c256, 1c768, 2c0
 		Falloff: 98, 98, 60, 30, 12, 0
@@ -325,14 +325,6 @@ Lyutyi.Strike:
 		ValidTargets: LyutyiPatrolBoat
 		Versus:
 			Heavy: 27
-		DamageTypes: TriggerProne, ExplosionDeath
-	Warhead@SeaBaby: SpreadDamage
-		Range: 0, 1c285, 1c768, 2c0
-		Falloff: 29, 29, 12, 0
-		Damage: 75000
-		ValidTargets: LyutyiSeaBaby
-		Versus:
-			Light: 27
 		DamageTypes: TriggerProne, ExplosionDeath
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Crater

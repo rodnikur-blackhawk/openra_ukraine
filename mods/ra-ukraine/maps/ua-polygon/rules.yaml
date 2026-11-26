@@ -9,6 +9,7 @@ Player:
 		CheckboxEnabled: True
 		CheckboxLocked: True
 		FastBuild: True
+		FastCharge: True
 	-ConquestVictoryConditions:
 	Shroud:
 		FogCheckboxEnabled: False
@@ -16,8 +17,7 @@ Player:
 		ExploredMapCheckboxEnabled: True
 		ExploredMapCheckboxLocked: True
 
-# airfield powers keep their normal recharge (Mi-8: 5 min, like the Paratroopers)
-# but are ready at the start
+# Airfield powers are also ready immediately when the airfield is placed.
 AFLD.Ukraine:
 	SpawnActorPower@heliassault:
 		StartFullyCharged: True

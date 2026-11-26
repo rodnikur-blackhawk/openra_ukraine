@@ -676,7 +676,6 @@ POKROVA.COVER:
 FLAMINGO:
 	Inherits: ^ScienceBuilding
 	ScriptTags:
-	-WithMakeAnimation:
 	Inherits@IDISABLE: ^DisableOnLowPowerOrPowerDown
 	Inherits@shape: ^2x1Shape
 	Valued:
@@ -719,22 +718,16 @@ FLAMINGO:
 		Amount: -150
 	MustBeDestroyed:
 		RequiredForShortGame: false
-	ExternalCondition@DELIVERY:
-		Condition: build-incomplete
-	ExternalCondition@PARKING:
-		Condition: flamingo-parking
 	ExternalCondition@TRACTORWRECK:
 		Condition: flamingo-tractor-wrecked
 	ExternalCondition@SCORCHED:
 		Condition: flamingo-scorched
-	WithSpriteBody:
-		RequiresCondition: !build-incomplete
 	WithIdleOverlay@TRACTOR:
 		Sequence: tractor-parked
-		RequiresCondition: !build-incomplete && !flamingo-parking && !flamingo-tractor-wrecked
+		RequiresCondition: !build-incomplete && !flamingo-tractor-wrecked
 	WithIdleOverlay@TRACTORWRECK:
 		Sequence: tractor-wreck
-		RequiresCondition: !build-incomplete && !flamingo-parking && flamingo-tractor-wrecked
+		RequiresCondition: !build-incomplete && flamingo-tractor-wrecked
 	WithIdleOverlay@SCORCH:
 		Sequence: trailer-scorch
 		RequiresCondition: !build-incomplete && flamingo-scorched
@@ -778,27 +771,6 @@ FLAMINGO:
 		SupportPowerPaletteOrder: 70
 	RenderSprites:
 		Image: flamingo
-
-^FlamingoDelivery:
-	Inherits: ^ClassicFacingSpriteActor
-	Mobile:
-		Locomotor: wheeled
-		Speed: 104
-		TurnSpeed: 20
-	WithFacingSpriteBody:
-	HiddenUnderFog:
-	Interactable:
-	RejectsOrders:
-
-FLAMINGO.DELIVERY:
-	Inherits: ^FlamingoDelivery
-	RenderSprites:
-		Image: flamingo.delivery
-
-FLAMINGO.TRACTOR:
-	Inherits: ^FlamingoDelivery
-	RenderSprites:
-		Image: flamingo.tractor
 
 AFLD.Ukraine:
 	Buildable:

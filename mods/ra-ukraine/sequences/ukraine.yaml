@@ -518,6 +518,7 @@ flamingo:
 	make:
 		Filename: flamingomake.shp
 		Length: *
+		Tick: 90
 	tractor-parked:
 		Filename: flamingovehicles.shp
 		ZOffset: 64
@@ -547,20 +548,6 @@ flamingo:
 	icon:
 		Filename: flamingoicon.shp
 		Scale: 1
-
-flamingo.delivery:
-	idle:
-		Filename: flamingovehicles.shp
-		Start: 3
-		Facings: -8
-		Scale: 1.15
-
-flamingo.tractor:
-	idle:
-		Filename: flamingovehicles.shp
-		Start: 11
-		Facings: -8
-		Scale: 1.15
 
 flamingo.missile:
 	up:

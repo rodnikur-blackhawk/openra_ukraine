@@ -279,16 +279,9 @@ Lyutyi.Strike:
 		Shadow: true
 		TrailImage: smokey
 	Warhead@1Dam: SpreadDamage
-		Range: 0, 0c512, 0c768, 1c256, 1c512
-		Falloff: 100, 100, 40, 10, 0
-		Damage: 75000
+		Spread: 1
+		Damage: 64500
 		ValidTargets: Structure
-		Versus:
-			None: 100
-			Wood: 100
-			Light: 100
-			Heavy: 100
-			Concrete: 100
 		DamageTypes: TriggerProne, ExplosionDeath
 	Warhead@1DamUnits: SpreadDamage
 		Range: 0, 0c512, 0c768, 1c256, 1c768, 2c0
@@ -445,16 +438,11 @@ StormShadow:
 			Heavy: 100
 			Concrete: 100
 		DamageTypes: TriggerProne, ExplosionDeath
-	Warhead@1DamBuildings: HealthPercentageDamage
+	Warhead@1DamBuildings: SpreadDamage
 		Spread: 1
-		Damage: 150
+		Damage: 112500
 		ValidTargets: Structure
-		InvalidTargets: StormMcv, StormSuperweapon
-		DamageTypes: ExplosionDeath
-	Warhead@1DamMcv: HealthPercentageDamage
-		Spread: 1
-		Damage: 70
-		ValidTargets: StormMcv
+		InvalidTargets: StormSuperweapon
 		DamageTypes: ExplosionDeath
 	Warhead@1DamSuperweapon: HealthPercentageDamage
 		Spread: 1

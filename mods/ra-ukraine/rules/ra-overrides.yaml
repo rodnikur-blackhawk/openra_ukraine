@@ -225,6 +225,10 @@ DTRK:
 	Buildable:
 		Prerequisites: ~disabled
 
+MCV:
+	Targetable@STORMMCV:
+		TargetTypes: StormMcv
+
 QTNK:
 	Buildable:
 		Prerequisites: fix, stek, ~vehicles.soviet, ~!vehicles.ukraine, ~techlevel.high
@@ -278,10 +282,14 @@ SPEN:
 		Prerequisites: anypower, ~structures.soviet, ~!structures.ukraine, ~techlevel.low
 
 IRON:
+	Targetable@STORMSUPERWEAPON:
+		TargetTypes: StormSuperweapon
 	Buildable:
 		Prerequisites: stek, ~structures.soviet, ~!structures.ukraine, ~techlevel.unrestricted
 
 PDOX:
+	Targetable@STORMSUPERWEAPON:
+		TargetTypes: StormSuperweapon
 	Buildable:
 		Prerequisites: atek, ~!structures.ukraine, ~techlevel.unrestricted
 
@@ -314,6 +322,8 @@ KENN:
 # --- Ukrainian superweapons replace the Missile Silo and the Iron Curtain
 
 MSLO:
+	Targetable@STORMSUPERWEAPON:
+		TargetTypes: StormSuperweapon
 	Buildable:
 		Prerequisites: techcenter, ~!structures.ukraine, ~techlevel.unrestricted
 

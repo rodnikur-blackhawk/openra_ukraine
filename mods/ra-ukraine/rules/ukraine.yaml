@@ -196,13 +196,13 @@ RATEL:
 		Prerequisites: dome, fix, ~vehicles.ukraine, ~techlevel.medium
 		Description: actor-ratel.description
 	Valued:
-		Cost: 950
+		Cost: 750
 	Tooltip:
 		Name: actor-ratel.name
 	Health:
 		HP: 4000
 	Mobile:
-		Speed: 113
+		Speed: 175
 		Locomotor: tracked
 	RevealsShroud:
 		Range: 2c0
@@ -675,6 +675,8 @@ POKROVA.COVER:
 
 FLAMINGO:
 	Inherits: ^ScienceBuilding
+	Targetable@STORMSUPERWEAPON:
+		TargetTypes: StormSuperweapon
 	ScriptTags:
 	Inherits@IDISABLE: ^DisableOnLowPowerOrPowerDown
 	Inherits@shape: ^2x1Shape

@@ -147,7 +147,7 @@ RatelCharge:
 		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
 	Warhead@1DamBuildings: TargetDamage
 		Spread: 1c256
-		Damage: 65000
+		Damage: 80000
 		ValidTargets: Structure
 		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
 	Warhead@2Smu: LeaveSmudge
@@ -229,7 +229,7 @@ SeaBabyCharge:
 FPV.Drone:
 	ValidTargets: Ground, Water, GroundActor, WaterActor, Trees
 	ReloadDelay: 60
-	Range: 5c512
+	Range: 9c0
 	Report: minelay1.aud
 	Projectile: Missile
 		Image: fpv
@@ -359,7 +359,7 @@ FPV.Bunker:
 	ReloadDelay: 70
 	Burst: 2
 	BurstDelays: 20
-	Range: 5c0
+	Range: 7c0
 	Warhead@1Dam: SpreadDamage
 		Spread: 213
 		Damage: 15000
@@ -409,7 +409,7 @@ FlamingoStrike:
 	ValidTargets: Ground, Water, GroundActor, WaterActor, Underwater, AirborneActor, Trees
 	Warhead@1Dam_impact: SpreadDamage
 		Range: 0, 1c1, 2c1, 2c512
-		Damage: 10000
+		Damage: 12750
 		Falloff: 1000, 1000, 250, 100
 		ValidTargets: GroundActor, WaterActor, Underwater, AirborneActor, Trees
 		AffectsParent: True
@@ -437,6 +437,7 @@ StormShadow:
 		Falloff: 100, 100, 0
 		Damage: 85000
 		ValidTargets: GroundActor, WaterActor
+		InvalidTargets: Structure, StormMcv, StormSuperweapon
 		Versus:
 			None: 10
 			Wood: 100
@@ -444,6 +445,22 @@ StormShadow:
 			Heavy: 100
 			Concrete: 100
 		DamageTypes: TriggerProne, ExplosionDeath
+	Warhead@1DamBuildings: HealthPercentageDamage
+		Spread: 1
+		Damage: 150
+		ValidTargets: Structure
+		InvalidTargets: StormMcv, StormSuperweapon
+		DamageTypes: ExplosionDeath
+	Warhead@1DamMcv: HealthPercentageDamage
+		Spread: 1
+		Damage: 70
+		ValidTargets: StormMcv
+		DamageTypes: ExplosionDeath
+	Warhead@1DamSuperweapon: HealthPercentageDamage
+		Spread: 1
+		Damage: 75
+		ValidTargets: StormSuperweapon
+		DamageTypes: ExplosionDeath
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Crater
 		ValidTargets: Ground, Infantry

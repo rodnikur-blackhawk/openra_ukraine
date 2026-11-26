@@ -675,6 +675,8 @@ POKROVA.COVER:
 
 FLAMINGO:
 	Inherits: ^ScienceBuilding
+	Targetable@STORMSUPERWEAPON:
+		TargetTypes: StormSuperweapon
 	ScriptTags:
 	Inherits@IDISABLE: ^DisableOnLowPowerOrPowerDown
 	Inherits@shape: ^2x1Shape

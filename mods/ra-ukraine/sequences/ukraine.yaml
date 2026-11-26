@@ -517,13 +517,16 @@ flamingo:
 		Tick: 75
 	make:
 		Filename: flamingomake.shp
+		Scale: 1
 		Length: *
 		Tick: 90
 	tractor-parked:
 		Filename: flamingovehicles.shp
+		Scale: 1
 		ZOffset: 64
 	tractor-wreck:
 		Filename: flamingovehicles.shp
+		Scale: 1
 		Start: 1
 		ZOffset: 64
 	trailer-scorch:

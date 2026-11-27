@@ -26,6 +26,7 @@ BTR4:
 		TurnSpeed: 28
 		Offset: -185,0,0
 	Armament:
+		FireDelay: 0
 		Weapon: 30mm.ZTM
 		LocalOffset: 403,-47,356
 		MuzzleSequence: muzzle
@@ -36,11 +37,22 @@ BTR4:
 		DecorationBounds: 1365, 1365
 	WithSwitchableOverlay@REARDOORS:
 		SwitchingSequence: doors-switch
-		EnabledSequence: doors-open
-		DisabledSequence: doors-closed
+		# Enabled is the resting state. The overlay initializes with this sequence.
+		EnabledSequence: doors-closed
+		DisabledSequence: doors-open
 		SwitchingLevel: 8
-		SwitchingLevelOnSpawn: 0
-		PauseOnCondition: !notmobile
+		SwitchingLevelOnSpawn: 9
+		PauseOnCondition: notmobile
+	RenderSprites:
+		Image: btr4
+	-WithAttackAnimation:
+	Cargo:
+		-LoadedCondition:
+	-WithFacingSpriteBody@BTR152CREW1:
+	-WithFacingSpriteBody@BTR152CREW2:
+	-WithFacingSpriteBody@BTR152CREW3:
+	-WithFacingSpriteBody@BTR152CREW4:
+	-WithFacingSpriteBody@BTR152CREW5:
 
 GEPARD:
 	Inherits: FTRK
@@ -544,6 +556,7 @@ SEABABY:
 BARR.Ukraine:
 	Inherits: BARR
 	Buildable:
+		Icon: icon-ukraine
 		Prerequisites: anypower, ~structures.ukraine, ~techlevel.infonly
 		Description: actor-barr.description
 	Tooltip:
@@ -559,6 +572,7 @@ BARR.Ukraine:
 STEK.Ukraine:
 	Inherits: STEK
 	Buildable:
+		Icon: icon-ukraine
 		Prerequisites: weap, dome, ~structures.ukraine, ~techlevel.high
 		Description: actor-stek-ukraine.description
 	Tooltip:
@@ -779,6 +793,7 @@ FLAMINGO:
 
 AFLD.Ukraine:
 	Buildable:
+		Icon: icon-ukraine
 		Description: actor-afld-ukraine-zsu.description
 	Tooltip:
 		Name: actor-afld-ukraine-zsu.name

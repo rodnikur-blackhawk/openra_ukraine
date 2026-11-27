@@ -216,6 +216,37 @@ V2RL:
 APC:
 	Buildable:
 		Prerequisites: ~!vehicles.ukraine, ~techlevel.low
+	RenderSprites:
+		Image: btr152
+	Mobile:
+		Locomotor: wheeled
+	Armament:
+		LocalOffset: 367,0,480
+		FireDelay: 2
+	WithAttackAnimation:
+		Sequence: fire
+	Cargo:
+		LoadedCondition: btr152-passenger
+	WithFacingSpriteBody@BTR152CREW1:
+		Name: btr152-crew-1
+		Sequence: passengers-1
+		RequiresCondition: btr152-passenger == 1
+	WithFacingSpriteBody@BTR152CREW2:
+		Name: btr152-crew-2
+		Sequence: passengers-2
+		RequiresCondition: btr152-passenger == 2
+	WithFacingSpriteBody@BTR152CREW3:
+		Name: btr152-crew-3
+		Sequence: passengers-3
+		RequiresCondition: btr152-passenger == 3
+	WithFacingSpriteBody@BTR152CREW4:
+		Name: btr152-crew-4
+		Sequence: passengers-4
+		RequiresCondition: btr152-passenger == 4
+	WithFacingSpriteBody@BTR152CREW5:
+		Name: btr152-crew-5
+		Sequence: passengers-5
+		RequiresCondition: btr152-passenger == 5
 
 FTRK:
 	Buildable:

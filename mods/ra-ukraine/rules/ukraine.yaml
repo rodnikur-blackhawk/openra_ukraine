@@ -208,13 +208,13 @@ RATEL:
 		Prerequisites: dome, fix, ~vehicles.ukraine, ~techlevel.medium
 		Description: actor-ratel.description
 	Valued:
-		Cost: 950
+		Cost: 750
 	Tooltip:
 		Name: actor-ratel.name
 	Health:
 		HP: 4000
 	Mobile:
-		Speed: 113
+		Speed: 175
 		Locomotor: tracked
 	RevealsShroud:
 		Range: 2c0
@@ -250,6 +250,18 @@ UAVOP:
 	TakeCover:
 		ProneOffset: 0,0,0
 	-FireWarheadsOnDeath:
+
+E3:
+	Armament@PRIMARY:
+		Weapon: StingerAA
+	Armament@GARRISONED:
+		Weapon: StingerAA
+	-Armament@SECONDARY:
+	-Armament@GARRISONEDSECONDARY:
+	AutoTargetPriority@DEFAULT:
+		ValidTargets: AirborneActor
+	AutoTargetPriority@ATTACKANYTHING:
+		ValidTargets: AirborneActor
 
 GUR:
 	Inherits: THF
@@ -297,7 +309,7 @@ TB2:
 		Prerequisites: ~afld, ~aircraft.ukraine, ~techlevel.medium
 		Description: actor-tb2.description
 	Valued:
-		Cost: 1250
+		Cost: 1300
 	Tooltip:
 		Name: actor-tb2.name
 	Health:
@@ -391,7 +403,7 @@ LYUTYI:
 		Prerequisites: ~afld, stek.ukraine, ~aircraft.ukraine, ~techlevel.high
 		Description: actor-lyutyi.description
 	Valued:
-		Cost: 1500
+		Cost: 960
 	Tooltip:
 		Name: actor-lyutyi.name
 	Health:
@@ -689,6 +701,8 @@ POKROVA.COVER:
 
 FLAMINGO:
 	Inherits: ^ScienceBuilding
+	Targetable@STORMSUPERWEAPON:
+		TargetTypes: StormSuperweapon
 	ScriptTags:
 	Inherits@IDISABLE: ^DisableOnLowPowerOrPowerDown
 	Inherits@shape: ^2x1Shape

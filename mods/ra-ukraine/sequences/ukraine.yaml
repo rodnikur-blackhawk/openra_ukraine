@@ -711,3 +711,15 @@ beacon:
 		Filename: stormshadowbcn.shp
 		Length: *
 		Offset: 0,-42
+
+barr:
+	icon-ukraine:
+		Filename: barrukricon.shp
+
+stek:
+	icon-ukraine:
+		Filename: stekukricon.shp
+
+afld:
+	icon-ukraine:
+		Filename: afldukricon.shp

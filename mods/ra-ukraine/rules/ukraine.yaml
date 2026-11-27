@@ -37,11 +37,12 @@ BTR4:
 		DecorationBounds: 1365, 1365
 	WithSwitchableOverlay@REARDOORS:
 		SwitchingSequence: doors-switch
-		EnabledSequence: doors-open
-		DisabledSequence: doors-closed
+		# Enabled is the resting state. The overlay initializes with this sequence.
+		EnabledSequence: doors-closed
+		DisabledSequence: doors-open
 		SwitchingLevel: 8
-		SwitchingLevelOnSpawn: 0
-		PauseOnCondition: !notmobile
+		SwitchingLevelOnSpawn: 9
+		PauseOnCondition: notmobile
 	RenderSprites:
 		Image: btr4
 	-WithAttackAnimation:
@@ -555,6 +556,7 @@ SEABABY:
 BARR.Ukraine:
 	Inherits: BARR
 	Buildable:
+		Icon: icon-ukraine
 		Prerequisites: anypower, ~structures.ukraine, ~techlevel.infonly
 		Description: actor-barr.description
 	Tooltip:
@@ -570,6 +572,7 @@ BARR.Ukraine:
 STEK.Ukraine:
 	Inherits: STEK
 	Buildable:
+		Icon: icon-ukraine
 		Prerequisites: weap, dome, ~structures.ukraine, ~techlevel.high
 		Description: actor-stek-ukraine.description
 	Tooltip:
@@ -788,6 +791,7 @@ FLAMINGO:
 
 AFLD.Ukraine:
 	Buildable:
+		Icon: icon-ukraine
 		Description: actor-afld-ukraine-zsu.description
 	Tooltip:
 		Name: actor-afld-ukraine-zsu.name

@@ -6,12 +6,10 @@
 #   enemy-air-far  : within 8c512 - the reach of the Gepard (35mm.AA 8c512), the
 #                    Flak Truck (FLAK-23-AA 8c0), the missile submarine
 #                    (SubMissileAA 8c0) and the corvette Mazepa (SAM 8c0)
-#   enemy-air-near : within 7c512 - the reach of the rocket soldier (RedEye) and
+#   enemy-air-near : within 7c512 - the reach of the Stinger infantry and
 #                    the destroyer (StingerAA)
-# While marked, the anti-ground weapon of these units is switched off: the
-# attack on the ground target ends, and the unit picks the aircraft by itself
-# (its anti-air weapon is the only one left). Once the aircraft are gone, the
-# anti-ground weapon is back and the unit returns to ground targets.
+# While marked, the destroyer's anti-ground weapon is switched off: it attacks
+# aircraft with its anti-air weapon, then returns to ground targets.
 # Works the same for players and bots, on every map.
 
 ^NeutralPlane:
@@ -49,12 +47,6 @@ MAZEPA:
 		Condition: enemy-air-far
 	Armament@NEPTUNE:
 		RequiresCondition: !enemy-air-far
-
-E3:
-	ExternalCondition@AIRTHREAT:
-		Condition: enemy-air-near
-	Armament@SECONDARY:
-		RequiresCondition: !enemy-air-near
 
 DD:
 	ExternalCondition@AIRTHREAT:

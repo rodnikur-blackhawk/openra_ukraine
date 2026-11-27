@@ -251,6 +251,18 @@ UAVOP:
 		ProneOffset: 0,0,0
 	-FireWarheadsOnDeath:
 
+E3:
+	Armament@PRIMARY:
+		Weapon: StingerAA
+	Armament@GARRISONED:
+		Weapon: StingerAA
+	-Armament@SECONDARY:
+	-Armament@GARRISONEDSECONDARY:
+	AutoTargetPriority@DEFAULT:
+		ValidTargets: AirborneActor
+	AutoTargetPriority@ATTACKANYTHING:
+		ValidTargets: AirborneActor
+
 GUR:
 	Inherits: THF
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
@@ -297,7 +309,7 @@ TB2:
 		Prerequisites: ~afld, ~aircraft.ukraine, ~techlevel.medium
 		Description: actor-tb2.description
 	Valued:
-		Cost: 1250
+		Cost: 1300
 	Tooltip:
 		Name: actor-tb2.name
 	Health:
@@ -391,7 +403,7 @@ LYUTYI:
 		Prerequisites: ~afld, stek.ukraine, ~aircraft.ukraine, ~techlevel.high
 		Description: actor-lyutyi.description
 	Valued:
-		Cost: 1500
+		Cost: 960
 	Tooltip:
 		Name: actor-lyutyi.name
 	Health:

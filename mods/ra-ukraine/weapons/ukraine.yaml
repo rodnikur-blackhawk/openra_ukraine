@@ -250,7 +250,7 @@ FPV.Drone:
 			Wood: 70
 			Tree: 70
 			Light: 35
-			Heavy: 18
+			Heavy: 45
 			Concrete: 10
 		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
 	Warhead@2Smu: LeaveSmudge

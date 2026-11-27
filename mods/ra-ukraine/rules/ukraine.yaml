@@ -251,9 +251,16 @@ UAVOP:
 		ProneOffset: 0,0,0
 	-FireWarheadsOnDeath:
 
-E3:
+E3.Ukraine:
+	Inherits: E3
 	Buildable:
+		Prerequisites: ~barracks, ~faction.ukraine, ~techlevel.infonly
+		Description: actor-stinger-trooper.description
 		Icon: icon-stinger
+	Tooltip:
+		Name: actor-stinger-trooper.name
+	RenderSprites:
+		Image: e3
 	Armament@PRIMARY:
 		Weapon: StingerAA
 	Armament@GARRISONED:
@@ -966,6 +973,9 @@ MI8:
 # --- AI: build and use the Ukrainian superweapons --------------------------
 
 Player:
+	ProvidesPrerequisite@ukraine:
+		Factions: ukraine
+		Prerequisite: faction.ukraine
 	GrantConditionOnFaction@UKRAINEBOT:
 		Condition: ukraine-faction
 		Factions: ukraine
@@ -982,7 +992,7 @@ Player:
 		UnitsToBuild:
 			uavop: 60
 			e1: 50
-			e3: 30
+			e3.ukraine: 30
 			e6: 8
 			gur: 5
 			harv: 10
@@ -1007,7 +1017,7 @@ Player:
 		UnitsToBuild:
 			uavop: 60
 			e1: 50
-			e3: 30
+			e3.ukraine: 30
 			e6: 8
 			gur: 5
 			harv: 15
@@ -1040,7 +1050,7 @@ Player:
 		UnitsToBuild:
 			uavop: 60
 			e1: 50
-			e3: 30
+			e3.ukraine: 30
 			e6: 8
 			gur: 5
 			harv: 15

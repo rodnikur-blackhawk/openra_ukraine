@@ -23,7 +23,7 @@ World:
 		ClassName: options-starting-units.light-support
 		Factions: ukraine
 		BaseActor: mcv
-		SupportActors: e1,e1,e1,e3,uavop,btr4
+		SupportActors: e1,e1,e1,e3.ukraine,uavop,btr4
 		InnerSupportRadius: 3
 		OuterSupportRadius: 5
 	StartingUnits@heavyukraine:
@@ -31,7 +31,7 @@ World:
 		ClassName: options-starting-units.heavy-support
 		Factions: ukraine
 		BaseActor: mcv
-		SupportActors: e1,e1,e1,e3,e3,uavop,btr4,gepard,bulat
+		SupportActors: e1,e1,e1,e3.ukraine,e3.ukraine,uavop,btr4,gepard,bulat
 		InnerSupportRadius: 3
 		OuterSupportRadius: 5
 
@@ -70,7 +70,7 @@ CRATE:
 		ValidFactions: soviet, russia
 	GiveUnitCrateAction@squadheavyukraine:
 		SelectionShares: 7
-		Units: e1,e1,uavop,uavop,e3,e3,e3,e6
+		Units: e1,e1,uavop,uavop,e3.ukraine,e3.ukraine,e3.ukraine,e6
 		ValidFactions: ukraine
 		TimeDelay: 4500
 	GiveUnitCrateAction@ss:
@@ -297,6 +297,10 @@ DOG:
 E2:
 	Buildable:
 		Prerequisites: ~barr, ~!infantry.ukraine, ~techlevel.infonly
+
+E3:
+	Buildable:
+		Prerequisites: ~barracks, ~!faction.ukraine, ~techlevel.infonly
 
 E4:
 	Buildable:

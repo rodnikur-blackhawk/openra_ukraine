@@ -296,7 +296,6 @@ DOG:
 
 E2:
 	Buildable:
-		Icon: icon-stinger
 		Prerequisites: ~barr, ~!infantry.ukraine, ~techlevel.infonly
 
 E4:

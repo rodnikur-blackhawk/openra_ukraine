@@ -674,8 +674,19 @@ pokrova:
 		Filename: pokrovaicon.shp
 
 # Ukrainian Naval Base (SPEN.Ukraine): the stock Sub Pen picture, labelled "NAVAL BASE"
-spen:
-	icon-ukraine:
+spen.ukraine:
+	Defaults:
+		Filename: spenua.shp
+	idle:
+		Offset: 0,2
+	damaged-idle:
+		Start: 1
+		Offset: 0,2
+	make:
+		Filename: spenuamake.shp
+		Length: *
+		Offset: 0,2
+	icon:
 		Filename: spenukricon.shp
 
 # Catapult launcher mounted on the Ukrainian Airfield for Lyutyi kamikaze drones
@@ -712,12 +723,47 @@ beacon:
 		Length: *
 		Offset: 0,-42
 
-barr:
-	icon-ukraine:
+barr.ukraine:
+	Defaults:
+		Filename: barrua.shp
+	idle:
+		Length: 10
+		Offset: 0,-6
+	damaged-idle:
+		Start: 10
+		Length: 10
+		Offset: 0,-6
+	make:
+		Filename: barruamake.shp
+		Length: *
+		Offset: 0,-6
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+	icon:
 		Filename: barrukricon.shp
 
-stek:
-	icon-ukraine:
+stek.ukraine:
+	Defaults:
+		Filename: stekua.shp
+	idle:
+		Length: 10
+	damaged-idle:
+		Start: 10
+		Length: 10
+	make:
+		Filename: stekuamake.shp
+		Length: *
+	bib:
+		Filename: bib2.tem
+		TilesetFilenames:
+			SNOW: bib2.sno
+			DESERT: bib2.des
+		Length: *
+	icon:
 		Filename: stekukricon.shp
 
 afld:

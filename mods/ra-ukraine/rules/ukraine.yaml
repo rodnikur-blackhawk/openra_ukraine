@@ -577,7 +577,8 @@ SEABABY:
 BARR.Ukraine:
 	Inherits: BARR
 	Buildable:
-		Icon: icon-ukraine
+		IconPalette: player-noshadow
+		IconPaletteIsPlayerPalette: true
 		Prerequisites: anypower, ~structures.ukraine, ~techlevel.infonly
 		Description: actor-barr.description
 	Tooltip:
@@ -588,12 +589,13 @@ BARR.Ukraine:
 		Prerequisite: barr
 	ProvidesPrerequisite@ukrainianname:
 	RenderSprites:
-		Image: barr
+		Image: barr.ukraine
 
 STEK.Ukraine:
 	Inherits: STEK
 	Buildable:
-		Icon: icon-ukraine
+		IconPalette: player-noshadow
+		IconPaletteIsPlayerPalette: true
 		Prerequisites: weap, dome, ~structures.ukraine, ~techlevel.high
 		Description: actor-stek-ukraine.description
 	Tooltip:
@@ -604,14 +606,13 @@ STEK.Ukraine:
 		Prerequisite: stek
 	ProvidesPrerequisite@ukrainianname:
 	RenderSprites:
-		Image: stek
+		Image: stek.ukraine
 
 SPEN.Ukraine:
 	Inherits: SPEN
 	Buildable:
 		Prerequisites: anypower, ~structures.ukraine, ~techlevel.low
 		Description: actor-spen-ukraine.description
-		Icon: icon-ukraine
 	Tooltip:
 		Name: actor-spen-ukraine.name
 	Selectable:
@@ -620,7 +621,7 @@ SPEN.Ukraine:
 		Prerequisite: spen
 	ProvidesPrerequisite@ukrainianname:
 	RenderSprites:
-		Image: spen
+		Image: spen.ukraine
 
 POKROVA:
 	Inherits: IRON

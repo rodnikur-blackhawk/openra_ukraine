@@ -576,6 +576,8 @@ SEABABY:
 
 BARR.Ukraine:
 	Inherits: BARR
+	WithProductionDoorOverlay:
+		RequiresCondition: !build-incomplete
 	Buildable:
 		IconPalette: player-noshadow
 		IconPaletteIsPlayerPalette: true

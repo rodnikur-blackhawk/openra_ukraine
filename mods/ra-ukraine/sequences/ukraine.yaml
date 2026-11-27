@@ -733,6 +733,17 @@ barr.ukraine:
 		Start: 10
 		Length: 10
 		Offset: 0,-6
+	build-door:
+		Filename: barruadoor.shp
+		Length: 4
+		Tick: 40
+		Offset: 0,-6
+	damaged-build-door:
+		Filename: barruadoor.shp
+		Start: 4
+		Length: 4
+		Tick: 40
+		Offset: 0,-6
 	make:
 		Filename: barruamake.shp
 		Length: *

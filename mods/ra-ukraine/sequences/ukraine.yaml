@@ -4,6 +4,39 @@
 # (it would land on the hull); bulat/oplot/gepard turrets also have a dark rim like the
 # stock Light Tank turret (tools/ukraine-sprites/outline_turret.py).
 
+btr152:
+	Defaults:
+		Filename: btr152.shp
+		Facings: -32
+	idle:
+	fire:
+		Start: 32
+		Length: 9
+		Transpose: True
+		Tick: 40
+	passengers-1:
+		Start: 320
+		ZOffset: 16
+	passengers-2:
+		Start: 352
+		ZOffset: 16
+	passengers-3:
+		Start: 384
+		ZOffset: 16
+	passengers-4:
+		Start: 416
+		ZOffset: 16
+	passengers-5:
+		Start: 448
+		ZOffset: 16
+	muzzle:
+		Filename: minigun.shp
+		Length: 6
+		Facings: 8
+	icon:
+		Filename: btr152icon.shp
+		Facings: 1
+
 btr4:
 	Defaults:
 		Filename: btr4.shp

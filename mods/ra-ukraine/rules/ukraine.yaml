@@ -26,6 +26,7 @@ BTR4:
 		TurnSpeed: 28
 		Offset: -185,0,0
 	Armament:
+		FireDelay: 0
 		Weapon: 30mm.ZTM
 		LocalOffset: 403,-47,356
 		MuzzleSequence: muzzle
@@ -41,6 +42,16 @@ BTR4:
 		SwitchingLevel: 8
 		SwitchingLevelOnSpawn: 0
 		PauseOnCondition: !notmobile
+	RenderSprites:
+		Image: btr4
+	-WithAttackAnimation:
+	Cargo:
+		-LoadedCondition:
+	-WithFacingSpriteBody@BTR152CREW1:
+	-WithFacingSpriteBody@BTR152CREW2:
+	-WithFacingSpriteBody@BTR152CREW3:
+	-WithFacingSpriteBody@BTR152CREW4:
+	-WithFacingSpriteBody@BTR152CREW5:
 
 GEPARD:
 	Inherits: FTRK

@@ -723,3 +723,7 @@ stek:
 afld:
 	icon-ukraine:
 		Filename: afldukricon.shp
+
+e3:
+	icon-stinger:
+		Filename: stingertroopericon.shp

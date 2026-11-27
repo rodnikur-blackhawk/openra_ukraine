@@ -252,6 +252,8 @@ UAVOP:
 	-FireWarheadsOnDeath:
 
 E3:
+	Buildable:
+		Icon: icon-stinger
 	Armament@PRIMARY:
 		Weapon: StingerAA
 	Armament@GARRISONED:

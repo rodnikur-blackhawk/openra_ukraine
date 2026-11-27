@@ -123,7 +123,7 @@ actor-uavop =
       Strong vs Infantry, Light armor and Tanks
       Weak vs Aircraft and Structures
 
-actor-e3 =
+actor-stinger-trooper =
     .name = Stinger Trooper
     .description =
     Anti-air infantry equipped with Stinger missiles.

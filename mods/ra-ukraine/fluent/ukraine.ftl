@@ -120,8 +120,15 @@ actor-uavop =
     .name = UAV Operator
     .description =
     Anti-infantry unit with FPV drones.
-      Strong vs Infantry and Light armor
-      Weak vs Tanks and Aircraft
+      Strong vs Infantry, Light armor and Tanks
+      Weak vs Aircraft and Structures
+
+actor-e3 =
+    .name = Stinger Trooper
+    .description =
+    Anti-air infantry equipped with Stinger missiles.
+      Strong vs Aircraft
+      Weak vs Ground units
 
 actor-gur =
     .name = HUR Agent

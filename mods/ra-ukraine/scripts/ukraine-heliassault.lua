@@ -19,8 +19,8 @@ HeliAssault =
 	Transport = "mi8",
 	Cargo =
 	{
-		{ "e1", "e1", "e3", "uavop" },
-		{ "e1", "e1", "e3", "uavop" }
+		{ "e1", "e1", "e3.ukraine", "uavop" },
+		{ "e1", "e1", "e3.ukraine", "uavop" }
 	},
 	-- cells between the two landing spots
 	Spacing = 2,

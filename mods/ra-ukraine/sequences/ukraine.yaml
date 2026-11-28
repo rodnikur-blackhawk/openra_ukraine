@@ -551,6 +551,9 @@ flamingo:
 		Start: 22
 		Length: 20
 		Tick: 75
+	ready-missile:
+		Start: 42
+		ZOffset: 32
 	make:
 		Filename: flamingomake.shp
 		Scale: 1

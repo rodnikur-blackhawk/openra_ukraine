@@ -122,7 +122,7 @@ Cursors:
 Chrome:
 	ra|chrome.yaml
 
-Assemblies: OpenRA.Mods.Common.dll, OpenRA.Mods.Cnc.dll
+Assemblies: OpenRA.Mods.Common.dll, OpenRA.Mods.Cnc.dll, mods/ra-ukraine/OpenRA.Mods.Ukraine.dll
 
 ChromeLayout:
 	common|chrome/ingame.yaml

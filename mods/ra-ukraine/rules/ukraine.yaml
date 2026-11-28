@@ -775,6 +775,11 @@ FLAMINGO:
 	WithIdleOverlay@FLAG:
 		Sequence: flag
 		RequiresCondition: !build-incomplete
+	GrantConditionOnSupportPowerReady:
+		Condition: flamingo-ready
+	WithIdleOverlay@MISSILE:
+		Sequence: ready-missile
+		RequiresCondition: flamingo-ready && !disabled && !build-incomplete
 	WithSupportPowerActivationAnimation:
 		RequiresCondition: !build-incomplete
 	Selectable:

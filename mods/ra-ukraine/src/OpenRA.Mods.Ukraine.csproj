@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+  <!-- OpenRAEngineDir points to the release-20250330 directory containing these DLLs. -->
+  <ItemGroup>
+    <Reference Include="OpenRA.Game" HintPath="$(OpenRAEngineDir)/OpenRA.Game.dll" Private="false" />
+    <Reference Include="OpenRA.Mods.Common" HintPath="$(OpenRAEngineDir)/OpenRA.Mods.Common.dll" Private="false" />
+  </ItemGroup>
+</Project>

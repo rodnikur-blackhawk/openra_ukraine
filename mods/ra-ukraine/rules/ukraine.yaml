@@ -640,8 +640,6 @@ POKROVA:
 		Body: beam
 		Sequence: beam-active
 		RequiresCondition: !build-incomplete
-	WithSupportPowerActivationAnimation:
-		RequiresCondition: !build-incomplete
 	Selectable:
 		Class: pokrova
 	SpawnActorPower@POKROVA:

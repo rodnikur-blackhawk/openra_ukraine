@@ -223,6 +223,8 @@ APC:
 	Armament:
 		LocalOffset: 367,0,480
 		FireDelay: 2
+	WithMuzzleOverlay:
+		IgnoreOffset: true
 	WithAttackAnimation:
 		Sequence: fire
 	Cargo:

@@ -30,9 +30,12 @@ btr152:
 		Start: 448
 		ZOffset: 16
 	muzzle:
-		Filename: minigun.shp
+		# These frames are positioned at the barrel tip for each of the body facings.
+		Start: 480
 		Length: 6
-		Facings: 8
+		Transpose: True
+		Tick: 40
+		ZOffset: 64
 	icon:
 		Filename: btr152icon.shp
 		Facings: 1

@@ -243,15 +243,16 @@ FPV.Drone:
 		RangeLimit: 9c0
 	Warhead@1Dam: SpreadDamage
 		Spread: 256
-		Damage: 10000
+		# Direct hits deal 20% more than Dragon against Light and Heavy armor.
+		Damage: 2000
 		ValidTargets: GroundActor, WaterActor, Trees
 		Versus:
-			None: 77
-			Wood: 77
-			Tree: 77
-			Light: 17
-			Heavy: 50
-			Concrete: 11
+			None: 385
+			Wood: 385
+			Tree: 385
+			Light: 102
+			Heavy: 300
+			Concrete: 55
 		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Crater

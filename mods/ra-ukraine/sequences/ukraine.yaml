@@ -746,7 +746,8 @@ barr.ukraine:
 		Offset: 0,-6
 	yard:
 		Filename: barruayard.shp
-		Length: *
+		# 375 frames at 80 ms keep departures 30 seconds apart.
+		Length: 375
 		Tick: 80
 		Offset: 0,-6
 		ZOffset: 256

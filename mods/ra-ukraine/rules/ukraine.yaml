@@ -578,6 +578,10 @@ BARR.Ukraine:
 	Inherits: BARR
 	WithProductionDoorOverlay:
 		RequiresCondition: !build-incomplete
+	WithIdleOverlay@YARD:
+		Sequence: yard
+		RequiresCondition: !build-incomplete
+		IsDecoration: true
 	Buildable:
 		Prerequisites: anypower, ~structures.ukraine, ~techlevel.infonly
 		Description: actor-barr.description

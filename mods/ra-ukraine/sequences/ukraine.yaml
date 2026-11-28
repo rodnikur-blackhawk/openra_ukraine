@@ -744,6 +744,13 @@ barr.ukraine:
 		Length: 4
 		Tick: 40
 		Offset: 0,-6
+	yard:
+		Filename: barruayard.shp
+		# 375 frames at 80 ms keep departures 30 seconds apart.
+		Length: 375
+		Tick: 80
+		Offset: 0,-6
+		ZOffset: 256
 	make:
 		Filename: barruamake.shp
 		Length: *

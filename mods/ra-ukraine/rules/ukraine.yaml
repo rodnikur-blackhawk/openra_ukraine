@@ -579,8 +579,6 @@ BARR.Ukraine:
 	WithProductionDoorOverlay:
 		RequiresCondition: !build-incomplete
 	Buildable:
-		IconPalette: player-noshadow
-		IconPaletteIsPlayerPalette: true
 		Prerequisites: anypower, ~structures.ukraine, ~techlevel.infonly
 		Description: actor-barr.description
 	Tooltip:
@@ -596,8 +594,6 @@ BARR.Ukraine:
 STEK.Ukraine:
 	Inherits: STEK
 	Buildable:
-		IconPalette: player-noshadow
-		IconPaletteIsPlayerPalette: true
 		Prerequisites: weap, dome, ~structures.ukraine, ~techlevel.high
 		Description: actor-stek-ukraine.description
 	Tooltip:

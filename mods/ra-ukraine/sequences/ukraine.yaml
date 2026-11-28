@@ -559,11 +559,13 @@ flamingo:
 	tractor-parked:
 		Filename: flamingovehicles.shp
 		Scale: 1
+		Offset: -8,7
 		ZOffset: 64
 	tractor-wreck:
 		Filename: flamingovehicles.shp
 		Scale: 1
 		Start: 1
+		Offset: -8,7
 		ZOffset: 64
 	trailer-scorch:
 		Filename: flamingovehicles.shp

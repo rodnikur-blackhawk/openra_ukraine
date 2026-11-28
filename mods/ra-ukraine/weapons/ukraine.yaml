@@ -243,15 +243,15 @@ FPV.Drone:
 		RangeLimit: 9c0
 	Warhead@1Dam: SpreadDamage
 		Spread: 256
-		Damage: 11000
+		Damage: 10000
 		ValidTargets: GroundActor, WaterActor, Trees
 		Versus:
-			None: 70
-			Wood: 70
-			Tree: 70
-			Light: 35
-			Heavy: 45
-			Concrete: 10
+			None: 77
+			Wood: 77
+			Tree: 77
+			Light: 17
+			Heavy: 50
+			Concrete: 11
 		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Crater

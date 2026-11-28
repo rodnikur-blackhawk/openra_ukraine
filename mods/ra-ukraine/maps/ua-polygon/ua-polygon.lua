@@ -4,8 +4,9 @@
    North-west: your base (airfields with Lyutyi drones, tech center, radar,
    barracks). East: rows of enemy buildings for the Lyutyi. South-east: groups
    of enemy tanks and infantry. West: UAV operators duelling a Tesla Tank with
-   the same range. South: enemy defences for the Storm Shadow. Middle: suggested
-   landing zone for the Mi-8 air assault. Both airfield powers start charged
+   the same range. South-west: lake with a naval base, starter ships and
+   respawning naval targets. South: enemy defences for the Storm Shadow. Middle:
+   suggested landing zone for the Mi-8 air assault. Both airfield powers start charged
    and then recharge normally (5 minutes).
 
    Enemy targets heal 20 seconds after they are hit and come back 15 seconds
@@ -32,7 +33,10 @@ local PlayerBase =
 	-- Bohdana with the raised barrel next to a Vilkha for comparison
 	{ "bohdana", 50, 41 }, { "vilkha", 53, 41 },
 	-- F-16 interceptors (Defend stance: they take off by themselves)
-	{ "f16", 54, 36 }, { "f16", 57, 36 }
+	{ "f16", 54, 36 }, { "f16", 57, 36 },
+	-- The power plant provides coastal build radius for additional naval bases.
+	{ "powr", 43, 54 }, { "spen.ukraine", 42, 59 },
+	{ "mazepa", 46, 62, "HoldFire" }, { "seababy", 43, 65 }
 }
 
 -- enemy targets: type, x, y, stance (nil for buildings without weapons)
@@ -59,6 +63,9 @@ local Targets =
 	{ "pbox", 59, 82, "HoldFire" }, { "gun", 63, 82, "HoldFire" }, { "ftur", 67, 82, "HoldFire" },
 	-- ... and a tight group of three: only the one that is hit goes down
 	{ "pbox", 49, 74, "HoldFire" }, { "hbox", 48, 75, "HoldFire" }, { "gun", 50, 75, "HoldFire" },
+
+	-- Naval targets: light ship, destroyer and submarine.
+	{ "pt", 40, 69, "HoldFire" }, { "dd", 51, 66, "HoldFire" }, { "ss", 48, 69, "HoldFire" },
 
 	-- F-16: enemy aircraft patrolling between two points (type, x, y, stance, patrol to)
 	{ "hind", 62, 36, "HoldFire", { 80, 36 } }, { "yak", 64, 48, "HoldFire", { 86, 48 } }
@@ -97,6 +104,7 @@ end
 local Hints =
 {
 	"Полігон Red Alert: Ukraine 1.3.0. Туман вимкнено, гроші — 100000.",
+	"ФЛОТ: на водоймі на південному заході є верф, «Мазепа», Sea Baby та три ворожі мішені. Нові кораблі будуються у вкладці флоту.",
 	"ЛЮТИЙ: виділіть дрон на аеродромі (північний захід) і накажіть атакувати будівлю на сході або групу танків на південному сході. Будівля з 64500 ХП і менше знищується одразу.",
 	"Нові «Люті» будуються на аеродромі за 6 секунд (вкладка авіації). Пряме влучання знищує наземну техніку. «Мамонт» із повним здоров’ям зберігає 25%.",
 	"МІ-8: кнопка «Mi-8 Air Assault» на панелі суперзброї праворуч, готова з початку. Клацніть по позначеній зоні в центрі мапи (або будь-де на суші). Перезарядка — 5 хвилин, як у «Десанту».",
@@ -113,8 +121,11 @@ WorldLoaded = function()
 	creeps = Player.GetPlayer("Creeps")
 	me.Cash = 100000
 
-	for _, b in ipairs(PlayerBase) do
-		Actor.Create(b[1], true, { Owner = me, Location = CPos.New(b[2], b[3]) })
+	for _, slot in ipairs(PlayerBase) do
+		local actor = Actor.Create(slot[1], true, { Owner = me, Location = CPos.New(slot[2], slot[3]) })
+		if slot[4] ~= nil then
+			actor.Stance = slot[4]
+		end
 	end
 
 	for _, slot in ipairs(Targets) do
@@ -123,7 +134,7 @@ WorldLoaded = function()
 
 	Beacon.New(me, Map.CenterOfCell(LandingZone), DateTime.Minutes(120), false)
 	Camera.Position = Map.CenterOfCell(CPos.New(52, 44))
-	UserInterface.SetMissionText("Полігон 1.3.0: «Лютий» · десант Мі-8 · оператори БПЛА")
+	UserInterface.SetMissionText("Полігон 1.3.0: «Лютий» · десант Мі-8 · оператори БПЛА · флот")
 
 	for i, text in ipairs(Hints) do
 		Trigger.AfterDelay(DateTime.Seconds(1 + (i - 1) * 4), function()
